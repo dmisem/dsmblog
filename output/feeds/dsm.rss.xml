@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>dsmblog</title><link>http://localhost:8000/</link><description></description><atom:link href="http://localhost:8000/feeds/dsm.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 26 Nov 2014 19:37:00 +0200</lastBuildDate><item><title>Запускаем пеликана.</title><link>http://localhost:8000/pelican-minstart.html</link><description>&lt;div class="contents topic" id="id3"&gt;
+&lt;span id="id2"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id4" id="id14"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id5" id="id15"&gt;Установка&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id6" id="id16"&gt;Первый блог&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id4"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Предисловие&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;В статье &amp;quot;&lt;a class="reference external" href="dsmblog-todo.html"&gt;Задачи и цели проекта&lt;/a&gt;&amp;quot; были изложены мотивы, побудившие заняться пеликаном, определены задачи и цели, намечены основные шаги.&lt;/p&gt;
+&lt;p&gt;Что такое пеликан, его возможности, и довольно подробная документация находится на официальном сайте документации &lt;a class="reference external" href="http://docs.getpelican.com"&gt;pelican&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Пока переводить её не планирую.&lt;/p&gt;
+&lt;p&gt;Поэтому в этой статье рассмотрим первый шаг − старт пеликана. И особенности, которые возникли в моём случает.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id2"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id5"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id15"&gt;Установка&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Установка довольно простая. Через pip.&lt;/p&gt;
+&lt;p&gt;Поэтому, сначала создаём виртуальное окружение (я использую &lt;a class="reference external" href="http://virtualenvwrapper.readthedocs.org/"&gt;virtualenvwrapper&lt;/a&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkvirtualenv -a blog_project_path pelican
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Устанавливаем pelican:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install pelican
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;или последнюю версию с &lt;a class="reference external" href="https://github.com/getpelican/pelican"&gt;github&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install -e &lt;span class="s2"&gt;&amp;quot;git+https://github.com/getpelican/pelican.git#egg=pelican&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил &lt;a class="reference external" href="https://github.com/Rykka/riv.vim"&gt;riv&lt;/a&gt; и работать с текстом в &lt;a class="reference external" href="http://www.vim.org/"&gt;vim&lt;/a&gt; стало совсем удобно. К тому же, ReStructuredText используется &lt;a class="reference external" href="http://sphinx-doc.org/"&gt;sphinx&lt;/a&gt; для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.&lt;/p&gt;
+&lt;p&gt;Так как я sphinx пока не использую достаточно docutils (его устанавливать не нужно, он идет в зависимостях пеликана).&lt;/p&gt;
+&lt;p&gt;Для выбравших Markdown:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install markdown
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Для начала работы все готово!&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id2"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id6"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id16"&gt;Первый блог&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="contents local topic" id="id7"&gt;
+&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id8" id="id17"&gt;Создаем каркас проекта&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id9" id="id18"&gt;Создаем первую статью&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id10" id="id19"&gt;Устанавливает тему&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id12" id="id20"&gt;Конфигурируем&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id8"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Создаем каркас проекта&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Каркас создается простой командой:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Один важный момент. Если виртуальное окружение привязано к директории проекта (в папке окружения лежит файл .project, в котором указан соответствующая директория), то пеликан создаст каркас именно в этой директории независим от того, какая директория является текущей. Если возникает потребность создать второй блог, то нужно либо создавать ещё одно окружение, либо отвязывать окружение от папки проекта, либо согласовывать папки (или переименовать папку со старым блогом, или изменить папку проекта окружения).&lt;/p&gt;
+&lt;p&gt;Теперь нужно ответить на вопросы (в принципе настройки потом можно поменять)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Welcome to pelican-quickstart v3.4.0.
+
+This script will &lt;span class="nb"&gt;help &lt;/span&gt;you create a new Pelican-based website.
+
+Please answer the following questions so this script can generate the files
+needed by Pelican.
+
+Using project associated with current virtual environment.Will save to:
+/home/***********
+
+&amp;gt; What will be the title of this web site? dsmblog
+&amp;gt; Who will be the author of this web site? ДСМ
+&amp;gt; What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt; ru
+&amp;gt; Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; http://localhost:8000
+&amp;gt; Do you want to &lt;span class="nb"&gt;enable &lt;/span&gt;article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; How many articles per page &lt;span class="k"&gt;do &lt;/span&gt;you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt;
+&amp;gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want to upload your website using GitHub Pages? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+Done. Your new project is available at /home/*********
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Пара замечаний:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Выбор языка по умолчанию. У меня выбор между английским, русским и украинским.
+Английский я, к сожалению, знаю не на столько, чтобы на нем писать статьи.
+Если выбирать между русским и украинским, то тут определяющими факторами есть
+то, что русскоговорящее сообщество значительно больше,
+и то, что планирую попытаться сделать авто-перевод статей и предполагаю, что с русского будет качественней
+(хотя по этому поводу собираюсь изучить вопрос попозже).&lt;/li&gt;
+&lt;li&gt;URL prefix лучше указывать даже если пока сайт будет работать на localhost.
+Иначе будет выдаваться предупреждение (warning)&lt;/li&gt;
+&lt;li&gt;Автоматизацию генерирования и публикации взял по умолчанию (автообновление сайта при внесении удобно).
+Автообновление сайта при внесении изменений удобно,
+а публикацию в вебе рассмотрю позже.&lt;/li&gt;
+&lt;li&gt;Остальные параметры можно установить по умолчанию (или поменять на своё усмотрение).
+В любом случае, их легко можно поменять позже.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;В результате получим такую структуру:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;dsmblog/
+├── content/
+│   └── &lt;span class="o"&gt;(&lt;/span&gt;pages&lt;span class="o"&gt;)&lt;/span&gt;
+├── output/
+├── Makefile
+├── develop_server.sh
+├── fabfile.py
+├── pelicanconf.py       &lt;span class="c"&gt;# Main settings file&lt;/span&gt;
+└── publishconf.py       &lt;span class="c"&gt;# Settings to use when ready to publish&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Теперь можно сгенерировать блог:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican content
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Переходим в папку output/ и запускаем сервер (для python3):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python -m http.server
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;или (для python2):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python -m SimpleHTTPServer
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;или (пеликан сам определит что и как запускать):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python -m pelican.server
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Теперь в броузере по адресу &lt;a class="reference external" href="http://127.0.0.1:8000"&gt;http://127.0.0.1:8000&lt;/a&gt; можем посмотреть свой пустой блог.&lt;/p&gt;
+&lt;p&gt;В дальнейшем удобнее использовать скрипт&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;develop_server.sh start
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;В этом случае все изменения в наполнении и установка блога будут вноситься автоматически. Иногда, правда, если где-то сделана ошибка и на сайте (блоге) изменеия не отображаются, можно остановить сервер &lt;code class="bash"&gt;develop_server.sh stop&lt;/code&gt;, пересобрать блог &lt;code class="bash"&gt;pelican content&lt;/code&gt; (обращая внимание на текущую папку) и заново запустить сервер.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id6"&gt;Первый блог&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id9"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Создаем первую статью&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Пример можно взять с сайта документации &lt;a class="reference external" href="http://docs.getpelican.com"&gt;pelican&lt;/a&gt;, там же достаточно подробная инофрмация о по поводу наполнения статей. В том числе, ссылки на статические ресурсы вроде изображений, файлов pdf и т.п.&lt;/p&gt;
+&lt;p&gt;Создаем файл с расширением .rst, наппример, my-super-post.&lt;/p&gt;
+&lt;p&gt;Вносим метаданные и какой-нибудь текст&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gh"&gt;My super title&lt;/span&gt;
+&lt;span class="gh"&gt;##############&lt;/span&gt;
+
+&lt;span class="nc"&gt;:date:&lt;/span&gt; &lt;span class="nf"&gt;2010-10-03 10:20&lt;/span&gt;
+&lt;span class="nc"&gt;:modified:&lt;/span&gt; &lt;span class="nf"&gt;2010-10-04 18:40&lt;/span&gt;
+&lt;span class="nc"&gt;:tags:&lt;/span&gt; &lt;span class="nf"&gt;thats, awesome&lt;/span&gt;
+&lt;span class="nc"&gt;:category:&lt;/span&gt; &lt;span class="nf"&gt;yeah&lt;/span&gt;
+&lt;span class="nc"&gt;:slug:&lt;/span&gt; &lt;span class="nf"&gt;my-super-post&lt;/span&gt;
+&lt;span class="nc"&gt;:authors:&lt;/span&gt; &lt;span class="nf"&gt;Alexis Metaireau, Conan Doyle&lt;/span&gt;
+&lt;span class="nc"&gt;:summary:&lt;/span&gt; &lt;span class="nf"&gt;Short version for index and feeds&lt;/span&gt;
+
+Какой-нибудь текст для моей первой супер-статьи.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Если запущен &lt;code class="bash"&gt;develop_server.sh&lt;/code&gt;, то просто обновляем страницу, если какой другой, то сначала перегенерируем сайт.&lt;/p&gt;
+&lt;p&gt;Потом эту супер-страницу можно будет перезаписать, удалить или спрятать (&lt;code class="rest"&gt;&lt;span class="nc"&gt;:status:&lt;/span&gt; &lt;span class="nf"&gt;hiiden&lt;/span&gt;&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id6"&gt;Первый блог&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id10"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Устанавливает тему&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Для работы с темами в пеликане есть инструмент &lt;code class="bash"&gt;pelican-themes&lt;/code&gt;, с помощью которого можно как установить готвые темы и использовать их потом только по названию. Или же можно использовать абсолютные или относительные (относительно папки проекта, например, &lt;code class="bash"&gt;themes/pelican-bootstrap3&lt;/code&gt;) пути к темам, которые содержат необходимые шаблоны.&lt;/p&gt;
+&lt;p&gt;Можно шаблон использовать разово, собрав сайт с параметром &lt;code class="bash"&gt;-t&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican -t theme_or_path_to_theme content
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;или, если тема будет использоваться постоянно, добавить параметр &lt;code class="bash"&gt;THEME&lt;/code&gt; в файле настроек &lt;code class="bash"&gt;pelicanconf.py&lt;/code&gt;. Например,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;themes/pelican-bootstrap3&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;При этом нужно, чтобы был установлен параметр&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RELATIVE_URLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Довольно большой перечень шаблонов можно найти на &lt;a class="reference external" href="https://github.com/getpelican/pelican-themes"&gt;хабе&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Для себя хотел адаптивный шаблон, поэтому выбрал &lt;a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3"&gt;pelican-bootstrap3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Опять же, возможные вариаты установки хорошо описаны а сайте. Как вариант скопировать в подпапку проекта &lt;code class="bash"&gt;themes&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;themes
+https://github.com/DandyDev/pelican-bootstrap3.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;и прописать как узано выше путь к файлу. В этом случае тема будет только для этого блога.&lt;/p&gt;
+&lt;p&gt;Другой вариант установить тему в виртуальное окружение pelican (так я его назвал в начале статьи), потом установить через &lt;code class="bash"&gt;pelican-themes&lt;/code&gt; и подключать только по названию. В этом случае, легко можно создавать несколько блогов в одном окружении с этой темой.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id6"&gt;Первый блог&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id12"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Конфигурируем&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Конфигурация блога задается с помощью параметров (переменных) в файле &lt;tt class="docutils literal"&gt;pelicanconf.py&lt;/tt&gt;. Полный перечень переменных определяется темой.&lt;/p&gt;
+&lt;p&gt;Сущестувует рекомендация разделять файл конфигурации, во-первых, для обеспечения конфиденциальности (персональные данные хранить в отдельном файле и не синхронизировать их с хостингом (включить в &lt;tt class="docutils literal"&gt;.gitignore&lt;/tt&gt;)), во-вторых, при большом объему логически разделять.&lt;/p&gt;
+&lt;p&gt;Пока для себя необходимости такой не вижу. Поэтому глубже рассмотрю этот вопрос в другой раз.&lt;/p&gt;
+&lt;p&gt;В целом, переменные, которые идут по умолчанию впполне понятны сами по себе. Часть из них устанавливается во время сздания каркаса, часть уже правили когда тему устанавливали.&lt;/p&gt;
+&lt;p&gt;Поэтому, суть конфигурирования (на начальном этапе) посмотреть параметры и установить свои данные. Добавить (при желании), свои контакты с соц. сетях и т.п.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;На этом пока все.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id6"&gt;Первый блог&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id2"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 17:20:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-30:pelican-minstart.html</guid><category>blog</category><category>pelican</category><category>start</category></item><item><title>Задачи и цели проекта dsmblog (Записки ДСМ)</title><link>http://localhost:8000/dsmblog-todo.html</link><description>&lt;div class="contents topic" id="id2"&gt;
+&lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id3" id="id14"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id4" id="id15"&gt;Предстроит сделать&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id10" id="id16"&gt;Уже сделано.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id3"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Предисловие&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;В процессе работы и самообучения возникло несколько задач, которые подвигли на создание этого блога.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Во-первых&lt;/strong&gt;, необходимость записывать для себя определённые настройки, последовательность действий, технологии, функции и т.п. Такого рода задач возникают регулярно при изучении разных технологий в программировании и при администрировании. Фактически, при решении задач, которые иногда приходится повторять (а, при возможности и автоматизировать). При этом в сети есть много блогов, статей, форумов которые дают ответы почти на все вопросы; но всегда есть особенности, которые отличают поставленную задачу от того, что рассматривается в статьях. Кроме того, форумы иногда закрываются, чужие статьи теряются, ... В общем, довольно важной видится задача создавать и как-то организовывать заметки для себя, в первую очередь. А если ещё кому-нибудь пригодится, будет замечательно.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Во-вторых&lt;/strong&gt;, возникло желание приобщиться в веб-технологиям, точнее к веб-программированию. Причины объяснять смысла нету − такое желание есть у многих, да и не тема это данной статьи. Один из побудительных мотивов − расширение сферы применения Python изучением которого уже некоторое время занимаюсь (пока для себя на уровне написания скриптов для системы). В результате предварительного ознакомления с веб-технологиями решил сначала посмотреть в сторону статических сайтов, потом уже копать или в сторону солидных back-end фреймворков (django и pyramid), или чуть поглубже копнуть во front-end (JQuery, bootstrap, AngularJS − что-то в этом роде).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;В-третьих,&lt;/strong&gt; некоторое время уже работаю с ReStructuredText. Зачем понадобился язык разметки и почему именно ReST возможно напишу в другой статье (посвящённой именно этому инструменту). Но использование ReST в качестве языка для написания заметок для меня было бы несомненным плюсом.&lt;/p&gt;
+&lt;p&gt;В контексте вышесказанного выбор pelican как генератор статического блога на python с поддержкой ReST в качестве одного из основных языков разметки для ведения своих заметок и хранения (выкладывания) их в сети выглядит очевидным.&lt;/p&gt;
+&lt;p&gt;Этапы, детали и нюансы работы с pelican опишу в следующей заметке. Сейчас просто рассмотрю что хочется получить в итоге. Статью со временем планирую править (до определённого логического предела, стараясь не плодить принципиально нового функционала, а только уточнять запланированное раньше и перемещать сделанное). Уже реализованную часть не удаляю, а перемещаю в конец статьи.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id4"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Предстроит сделать&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="contents local topic" id="id5"&gt;
+&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id6" id="id17"&gt;Доработка интерфейса&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id7" id="id18"&gt;Мультиязычность&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id8" id="id19"&gt;Автоматизация&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#git-bitbucket" id="id20"&gt;Интеграция (git, bitbucket, .... ???)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id9" id="id21"&gt;Расширение функциональности&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id6"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Доработка интерфейса&lt;/a&gt;&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Создать свой логотип и favicon и прикрутить к сайту.&lt;/li&gt;
+&lt;li&gt;Изучить возможности выбранной темы и применить всё, что считаю нужным для себя.&lt;/li&gt;
+&lt;li&gt;Может добавить свой значек для контактов&lt;/li&gt;
+&lt;li&gt;Добавить-изменить &amp;quot;под себя&amp;quot;:&lt;ul&gt;
+&lt;li&gt;продумать и записать в этой статье;&lt;/li&gt;
+&lt;li&gt;реализовать и описать в другой статье.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Сделать варианты день-ночь, цвет-монохром.&lt;/li&gt;
+&lt;li&gt;Создать авторскую стартовую страницу.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id7"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Мультиязычность&lt;/a&gt;&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Изучить стандартные возможности (встроенные) по интернационализации.
+Насколько понял, есть возможность переводить статьи, не знаю как ведет система при отсутствии статьи в одном языке и наличии в другом. Кроме того, насколько понял, язык интерфейса один − установленый по умолчанию.&lt;/li&gt;
+&lt;li&gt;Возможности по интернационализации интерфейса.&lt;/li&gt;
+&lt;li&gt;Возможности по переводу статей (особенно в плане автоперевода или автоссылки не статьи с существующим переводом).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id8"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Автоматизация&lt;/a&gt;&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;создание статьи:&lt;ul&gt;
+&lt;li&gt;выбор существующей категрии или создание новой;&lt;/li&gt;
+&lt;li&gt;выбор тегов (по категории или из всех) или создание новых.&lt;/li&gt;
+&lt;li&gt;создание заголовков (слагов) чтбы не дубировалсь.&lt;/li&gt;
+&lt;li&gt;создание и подскаска по другим метаполям (метатегам).&lt;/li&gt;
+&lt;li&gt;создание статей на других языках (с ссылками на основной)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Управление статьями (на будущее)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="git-bitbucket"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Интеграция (git, bitbucket, .... ???)&lt;/a&gt;&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Определится с хостингом для проекта (git vs bitbucket).&lt;/li&gt;
+&lt;li&gt;Адаптировать файлы настроек для переноса (как минимум, создать local_settings.py)&lt;/li&gt;
+&lt;li&gt;Оптимизировать структуру с учётом переноса на хостинг (пока на на основе &lt;a class="reference external" href="http://www.unix-lab.org/posts/pelican"&gt;http://www.unix-lab.org/posts/pelican&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;Перенести проект на хостинг.&lt;/li&gt;
+&lt;li&gt;Настроить синхронизацию.&lt;/li&gt;
+&lt;li&gt;Разделить версию для локального сервера и для хостинга.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id9"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Расширение функциональности&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Изучить вопрос функциональности блогов в целом (как статических таки динамических) определится что мне нужно сейчас и что может понадобится в ближайшем будущем.&lt;/p&gt;
+&lt;p&gt;Пока предварительные выводы из сайта &lt;a class="reference external" href="http://www.unix-lab.org/posts/pelican"&gt;http://www.unix-lab.org/posts/pelican&lt;/a&gt;:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;robots.txt;&lt;/li&gt;
+&lt;li&gt;карта сайта;&lt;/li&gt;
+&lt;li&gt;google analitycs;&lt;/li&gt;
+&lt;li&gt;комментарии.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id10"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Уже сделано.&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;В этом разделе расположены задачи, которые уже выполнены и описаны в блоге. Поэтому для заданий (подразделов) будет указана ссылка на статью в которой описано решение задачи.&lt;/p&gt;
+&lt;div class="contents local topic" id="id11"&gt;
+&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id12" id="id22"&gt;Минимальный старт&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="id12"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Минимальный старт&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Описано в статье &amp;quot;&lt;a class="reference external" href="dsmblog-minstart.html"&gt;Запускаем пеликана&lt;/a&gt;&amp;quot;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Установить минимальный набор инструментов необходимый для работы с pelican.&lt;/li&gt;
+&lt;li&gt;Создать свой блог (dsmblog).&lt;/li&gt;
+&lt;li&gt;Выбрать и установить отзывчивую (резиновую) тему.&lt;/li&gt;
+&lt;li&gt;Написать пару заметок-статей (эту и описанние процесса)&lt;/li&gt;
+&lt;li&gt;Отладить работу на локальном сервере.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 19:37:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-26:dsmblog-todo.html</guid><category>blog</category><category>about</category></item></channel></rss>
