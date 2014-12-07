@@ -28,10 +28,10 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-    ('linkedin', 'http://ua.linkedin.com/pub/dmitry-semenov/5/994/a6a'),
-    ('github', 'https://github.com/dmisem'),
-    ('bitbucket', 'https://bitbucket.org/dmisem'),
-    # ('@', 'mailto://dmitry.5674@gmail.com'),
+    ('linkedin', 'http://ua.linkedin.com/pub/dmitry-semenov/5/994/a6a', ''),
+    ('github', 'https://github.com/dmisem', ''),
+    ('bitbucket', 'https://bitbucket.org/dmisem', ''),
+    ('e-mail', 'mailto:dmitry.5674@gmail.com', 'envelope'),
 )
 
 DEFAULT_PAGINATION = 10
