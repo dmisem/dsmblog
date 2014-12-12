@@ -12,6 +12,10 @@ TIMEZONE = ls.TIMEZONE
 LOCALE = ls.LOCALE
 DEFAULT_LANG = ls.DEFAULT_LANG
 
+OUTPUT_PATH = 'articles/'
+ARTICLE_URL = 'articles/{slug}/'
+ARTICLE_SAVE_AS = 'articles/{slug}/index.html'
+
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -40,3 +44,7 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 THEME = "themes/pelican-bootstrap3"
+
+
+
+

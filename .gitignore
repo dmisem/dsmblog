@@ -1,6 +1,7 @@
 .ropeproject/
 __pycache__/
 cache/
+output/
 *.pyc
 local_settings.*
 *.pid
