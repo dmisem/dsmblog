@@ -13,8 +13,10 @@ LOCALE = ls.LOCALE
 DEFAULT_LANG = ls.DEFAULT_LANG
 
 OUTPUT_PATH = 'articles/'
-ARTICLE_URL = 'articles/{slug}/'
-ARTICLE_SAVE_AS = 'articles/{slug}/index.html'
+ARTICLE_URL = 'articles/{lang}/{slug}.html'
+ARTICLE_SAVE_AS = ARTICLE_URL
+ARTICLE_LANG_URL = ARTICLE_URL
+ARTICLE_LANG_SAVE_AS = ARTICLE_URL
 
 
 # Feed generation is usually not desired when developing
