@@ -296,9 +296,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="blog"></category><category term="about"></category></entry><entry><title>Временная статья для тестирования</title><link href="http://localhost:8000/articles/ru/TempTest.html" rel="alternate"></link><updated>2014-11-26T00:00:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-11-26:articles/ru/TempTest.html</id><summary type="html">&lt;!-- :translate: true --&gt;
-&lt;p&gt;Это страничка для тетирования разных возможностей.&lt;/p&gt;
-</summary></entry><entry><title>reStructuredText и сложные документы.</title><link href="http://localhost:8000/articles/ru/rest-complex.html" rel="alternate"></link><updated>2014-12-08T00:00:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-08-30:articles/ru/rest-complex.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
+</summary><category term="blog"></category><category term="about"></category></entry><entry><title>reStructuredText и сложные документы.</title><link href="http://localhost:8000/articles/ru/rest-complex.html" rel="alternate"></link><updated>2014-12-08T00:00:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-08-30:articles/ru/rest-complex.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id19"&gt;&amp;quot;Нахрена козе баян&amp;quot;&lt;/a&gt;&lt;/li&gt;

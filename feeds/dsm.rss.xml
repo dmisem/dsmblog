@@ -296,9 +296,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 19:37:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</guid><category>blog</category><category>about</category></item><item><title>Временная статья для тестирования</title><link>http://localhost:8000/articles/ru/TempTest.html</link><description>&lt;!-- :translate: true --&gt;
-&lt;p&gt;Это страничка для тетирования разных возможностей.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 00:00:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-26:articles/ru/TempTest.html</guid></item><item><title>reStructuredText и сложные документы.</title><link>http://localhost:8000/articles/ru/rest-complex.html</link><description>&lt;div class="contents topic" id="id2"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 19:37:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</guid><category>blog</category><category>about</category></item><item><title>reStructuredText и сложные документы.</title><link>http://localhost:8000/articles/ru/rest-complex.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id19"&gt;&amp;quot;Нахрена козе баян&amp;quot;&lt;/a&gt;&lt;/li&gt;
