@@ -1,0 +1,12 @@
+.ropeproject/
+__pycache__/
+cache/
+output/
+dsmblog/
+test*
+tmp*
+*.pyc
+local_settings.*
+*.pid
+Makefile
+fabfile.py
