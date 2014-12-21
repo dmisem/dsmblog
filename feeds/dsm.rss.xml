@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Записки ДСМ</title><link>http://localhost:8000/</link><description></description><atom:link href="http://localhost:8000/feeds/dsm.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 21 Dec 2014 00:00:00 +0200</lastBuildDate><item><title>Перселяем pelican на github.</title><link>http://localhost:8000/articles/ru/pelican-github.html</link><description>&lt;div class="contents topic" id="id2"&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Записки ДСМ</title><link>http://localhost:8000/</link><description></description><atom:link href="http://localhost:8000/feeds/dsm.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 21 Dec 2014 00:00:00 +0200</lastBuildDate><item><title>Переселяем pelican на github.</title><link>http://localhost:8000/articles/ru/pelican-github.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id18"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
