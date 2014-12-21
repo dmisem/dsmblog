@@ -289,6 +289,26 @@ git push
 </div>
 <div class="section" id="id17">
 <h2><a class="toc-backref" href="#id21">Автоматизация и синхронизация</a></h2>
+<p>Автоматизировать внесение изменений кода на github смысла не вижу.</p>
+<p>А вот работу с созданным сайтом вижу по такой схеме:</p>
+<ul class="simple">
+<li>сначала создаётся сайт в папке output;</li>
+<li>проверяется его работа на локальном сервере;</li>
+<li>если все в порядке, создаётся окончательная версия в папке dsmblog и отправляется на сервер.</li>
+</ul>
+<p>Автоматизировать стоит только последний пункт. Для этого создан скрипт <cite>git.dsmblog.sh</cite> с таким содержим:</p>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nv">DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="s2">&quot;/dsmblog&quot;</span>
+<span class="nv">CDT</span><span class="o">=</span><span class="sb">`</span>date +%Y-%m-%d<span class="se">\ </span>%H:%M<span class="sb">`</span>  <span class="c"># Current datetime</span>
+<span class="nv">GT</span><span class="o">=</span><span class="s2">&quot;git --git-dir=${DIR}/.git --work-tree=${DIR} &quot;</span>
+
+pelican -o dsmblog content
+<span class="nb">echo </span>Generated
+
+<span class="k">${</span><span class="nv">GT</span><span class="k">}</span>add . <span class="o">&amp;&amp;</span> <span class="k">${</span><span class="nv">GT</span><span class="k">}</span>commit -a -m <span class="s2">&quot;Autogenerate: ${CDT}&quot;</span> <span class="o">&amp;&amp;</span> <span class="k">${</span><span class="nv">GT</span><span class="k">}</span>push
+<span class="nb">echo </span>Pushed!
+</pre></div>
 <p><a class="reference internal" href="#id1">Содержание</a></p>
 </div>
 
@@ -332,18 +352,8 @@ git push
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
-                        <a href="../../tag/restructuredtext.html">
-                            reStructuredText
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
                         <a href="../../tag/github.html">
                             github
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="../../tag/libreoffice.html">
-                            LibreOffice
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
@@ -352,8 +362,18 @@ git push
                         </a>
                     </li>
                     <li class="list-group-item tag-4">
+                        <a href="../../tag/libreoffice.html">
+                            LibreOffice
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
                         <a href="../../tag/about.html">
                             about
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="../../tag/restructuredtext.html">
+                            reStructuredText
                         </a>
                     </li>
                 </ul>
