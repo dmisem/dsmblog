@@ -117,7 +117,7 @@
 <li><a class="reference internal" href="#id4" id="id16">Предисловие</a></li>
 <li><a class="reference internal" href="#id5" id="id17">Установка</a></li>
 <li><a class="reference internal" href="#id6" id="id18">Первый блог</a></li>
-<li><a class="reference internal" href="#id13" id="id19">Статьи-продолжения</a></li>
+<li><a class="reference internal" href="#id12" id="id19">Статьи-продолжения</a></li>
 </ul>
 </div>
 <div class="section" id="id4">
@@ -131,7 +131,7 @@
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id17">Установка</a></h2>
 <p>Установка довольно простая. Через pip.</p>
-<p>Поэтому, сначала создаём виртуальное окружение (я использую <a class="reference external" href="http://virtualenvwrapper.readthedocs.org/">virtualenvwrapper</a>):</p>
+<p>Поэтому, сначала создаём виртуальное окружение (я использую <a class="reference external" href="http://virtualenvwrapper.readthedocs.org">virtualenvwrapper</a>):</p>
 <div class="highlight"><pre>mkvirtualenv -a blog_project_path pelican
 </pre></div>
 <p>Устанавливаем pelican:</p>
@@ -140,7 +140,7 @@
 <p>или последнюю версию с <a class="reference external" href="https://github.com/getpelican/pelican">github</a>:</p>
 <div class="highlight"><pre>pip install -e <span class="s2">&quot;git+https://github.com/getpelican/pelican.git#egg=pelican&quot;</span>
 </pre></div>
-<p>Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил <a class="reference external" href="https://github.com/Rykka/riv.vim">riv</a> и работать с текстом в <a class="reference external" href="http://www.vim.org/">vim</a> стало совсем удобно. К тому же, ReStructuredText используется <a class="reference external" href="http://sphinx-doc.org/">sphinx</a> для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.</p>
+<p>Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил <a class="reference external" href="https://github.com/Rykka/riv.vim">riv</a> и работать с текстом в <a class="reference external" href="http://www.vim.org">vim</a> стало совсем удобно. К тому же, ReStructuredText используется <a class="reference external" href="http://sphinx-doc.org">sphinx</a> для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.</p>
 <p>Так как я sphinx пока не использую достаточно docutils (его устанавливать не нужно, он идет в зависимостях пеликана).</p>
 <p>Для выбравших Markdown:</p>
 <div class="highlight"><pre>pip install markdown
@@ -156,7 +156,7 @@
 <li><a class="reference internal" href="#id8" id="id20">Создаем каркас проекта</a></li>
 <li><a class="reference internal" href="#id9" id="id21">Создаем первую статью</a></li>
 <li><a class="reference internal" href="#id10" id="id22">Устанавливает тему</a></li>
-<li><a class="reference internal" href="#id12" id="id23">Конфигурируем</a></li>
+<li><a class="reference internal" href="#id11" id="id23">Конфигурируем</a></li>
 </ul>
 </div>
 <div class="section" id="id8">
@@ -185,7 +185,7 @@ Using project associated with current virtual environment.Will save to:
 &gt; How many articles per page <span class="k">do</span> you want? <span class="o">[</span>10<span class="o">]</span>
 &gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span>
 &gt; Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span>
-&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span>
+&gt; Do you want to upload your website
 &gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span>
 &gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span>
 &gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span>
@@ -273,7 +273,7 @@ Done. Your new project is available at /home/*********
 <p>При этом нужно, чтобы был установлен параметр</p>
 <div class="highlight"><pre><span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="bp">True</span>
 </pre></div>
-<p>Довольно большой перечень шаблонов можно найти на <a class="reference external" href="https://github.com/getpelican/pelican-themes">хабе</a>.</p>
+<p>Довольно большой перечень шаблонов можно найти на <a class="reference external" href="https://github.com/getpelican/pelican-themes">гитхабе</a>.</p>
 <p>Для себя хотел адаптивный шаблон, поэтому выбрал <a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3">pelican-bootstrap3</a></p>
 <p>Опять же, возможные вариаты установки хорошо описаны а сайте. Как вариант скопировать в подпапку проекта <code class="bash">themes</code></p>
 <div class="highlight"><pre><span class="nb">cd </span>themes
@@ -283,7 +283,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 <p>Другой вариант установить тему в виртуальное окружение pelican (так я его назвал в начале статьи), потом установить через <code class="bash">pelican-themes</code> и подключать только по названию. В этом случае, легко можно создавать несколько блогов в одном окружении с этой темой.</p>
 <p><a class="reference internal" href="#id6">Первый блог</a></p>
 </div>
-<div class="section" id="id12">
+<div class="section" id="id11">
 <h3><a class="toc-backref" href="#id7">Конфигурируем</a></h3>
 <p>Конфигурация блога задается с помощью параметров (переменных) в файле <tt class="docutils literal">pelicanconf.py</tt>. Полный перечень переменных определяется темой.</p>
 <p>Сущестувует рекомендация разделять файл конфигурации, во-первых, для обеспечения конфиденциальности (персональные данные хранить в отдельном файле и не синхронизировать их с хостингом (включить в <tt class="docutils literal">.gitignore</tt>)), во-вторых, при большом объему логически разделять.</p>
@@ -295,11 +295,12 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 <p><a class="reference internal" href="#id2">Содержание</a></p>
 </div>
 </div>
-<div class="section" id="id13">
+<div class="section" id="id12">
 <h2><a class="toc-backref" href="#id19">Статьи-продолжения</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="pelican-github.html">Переселяем пеликана на github</a></li>
 </ul>
+<!-- Links: -->
 </div>
 
             </div>

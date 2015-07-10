@@ -42,17 +42,17 @@
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Thu, 09 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2015-07-09:articles/ru/python-import-config.html</guid><category>python</category></item><item><title>Переселяем pelican на github.</title><link>http://localhost:8000/articles/ru/pelican-github.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id3" id="id17"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#dsmblog-github" id="id18"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id12" id="id19"&gt;github как веб-хостер&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id16" id="id20"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id3" id="id18"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#dsmblog-github" id="id19"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id8" id="id20"&gt;github как веб-хостер&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id11" id="id21"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id3"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id17"&gt;Предисловие&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id18"&gt;Предисловие&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;В предыдущих статьях, посвящённых генератору статических сайтов pelican были описаны основные &lt;a class="reference external" href="dsmblog-todo.html"&gt;задачи и цели&lt;/a&gt;, которые хотел решить работая с пеликаном, о описаны &lt;a class="reference external" href="pelican-minstart.html"&gt;начальные действия&lt;/a&gt; необходимые для того чтобы создать свой блог, поместить в нём пару статей и запустить на локальном сервере.&lt;/p&gt;
 &lt;p&gt;Следующим шагом, по плану, необходимо разместить проект на каком-либо хостинге для проектов, а результат на веб‑хостинге.&lt;/p&gt;
-&lt;div class="section" id="id5"&gt;
+&lt;div class="section" id="id4"&gt;
 &lt;h3&gt;Что нужно сделать&lt;/h3&gt;
 &lt;p&gt;Итак, ориентировочный перечень задач:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -65,7 +65,7 @@
 &lt;/div&gt;
 &lt;div class="section" id="git"&gt;
 &lt;h3&gt;Почему git&lt;/h3&gt;
-&lt;p&gt;Выбор, в общем-то, между &lt;a class="reference external" href="https://github.com/"&gt;github&lt;/a&gt; и &lt;a class="reference external" href="https://bitbucket.org/"&gt;bitbucket&lt;/a&gt;. Оба хостинга имеют необходимый бесплатный функционал (мне пока нужно git и веб‑хостинг, возможность работать через SSL есть и там, и там). Субъективные оценки интерфейса старался не учитывать. Для себя отметил пока такие особенности ресурсов:&lt;/p&gt;
+&lt;p&gt;Выбор, в общем-то, между &lt;a class="reference external" href="https://github.com"&gt;github&lt;/a&gt; и &lt;a class="reference external" href="https://bitbucket.org"&gt;bitbucket&lt;/a&gt;. Оба хостинга имеют необходимый бесплатный функционал (мне пока нужно git и веб‑хостинг, возможность работать через SSL есть и там, и там). Субъективные оценки интерфейса старался не учитывать. Для себя отметил пока такие особенности ресурсов:&lt;/p&gt;
 &lt;p&gt;github&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;имеет большое сообщество;&lt;/li&gt;
@@ -86,11 +86,11 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dsmblog-github"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id18"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="section" id="id6"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id19"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="id5"&gt;
 &lt;h3&gt;Регистрация и установка git.&lt;/h3&gt;
 &lt;p&gt;Если ещё раньше этого сделано не было (регистрация на github и | или установка git) − самое время.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://help.github.com/articles/signing-up-for-a-new-github-account/"&gt;Регистрация на github&lt;/a&gt; предельно проста, хорошо описана (хоть и на английском, но понятно для того чтобы выбрать бесплатный вариант для обычного пользователя).&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://help.github.com/articles/signing-up-for-a-new-github-account"&gt;Регистрация на github&lt;/a&gt; предельно проста, хорошо описана (хоть и на английском, но понятно для того чтобы выбрать бесплатный вариант для обычного пользователя).&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://help.github.com/articles/set-up-git/#platform-linux"&gt;Установка git&lt;/a&gt; довольно проста (по крайней мере, в Linux). По поводу &lt;code class="bash"&gt;git config&lt;/code&gt; −изменения записываются в файл &lt;code class="bash"&gt;~/.gitconfig&lt;/code&gt; и могут легко быть исправлены и (или) дополнены. Более того, можно сразу создать (или скопировать из архива) этот файл.&lt;/p&gt;
 &lt;p&gt;Мой файл конфигурации:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;user&lt;span class="o"&gt;]&lt;/span&gt;
@@ -106,11 +106,11 @@
 &lt;p&gt;Есть вопрос выбора между SSL и HTTPS. Первый вариант (SSL), вроде даёт возможность не вводить каждый раз пароль и под Linux реализуется элементарно. Второй (HTTPS) рекомендован githib-ом + в комбинации с параметром &lt;code class="bash"&gt;&lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;3600&lt;/code&gt; позволяет вводить пароль только один раз за сеанс работы. В итоге я остановился на HTTPS (пошёл по пути наименьшего сопротивления).&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id9"&gt;
+&lt;div class="section" id="github"&gt;
 &lt;h3&gt;Хостим код на github&lt;/h3&gt;
 &lt;p&gt;Вариант очевидный. Есть локальный dsmblog и есть одноимённый проект на github. Нужно синхронизировать. Можно, но сложно. Хотя, если на github совсем пустой проект, то не так уж и сложно. Но, как сказал классик, мы пойдём другим путём.&lt;/p&gt;
 &lt;p&gt;Сохраняем свой проект под другим именем (например, dsmblog_local):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;mv dsmblog dsmblog_local
+&lt;div class="highlight"&gt;&lt;pre&gt;mv dsmblog dsmblog
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Клонируем проект с github и инициализируем:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone https://github.com/dmisem/dsmblog.git &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;dsmblog &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git init
@@ -120,7 +120,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Почти всё. Осталось настроить параметры синхронизации (назовём это так). Об этом в следующем подразделе.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id10"&gt;
+&lt;div class="section" id="id6"&gt;
 &lt;h3&gt;Локальные параметры&lt;/h3&gt;
 &lt;p&gt;Локальные параметры:
 * некоторые параметры из &lt;code class="bash"&gt;pelicanconf.py&lt;/code&gt;, которые не нужно выкладывать в общедоступную среду;
@@ -169,7 +169,7 @@ fabfile.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Здесь считаю нужным отметить папки &lt;cite&gt;output/&lt;/cite&gt; и &lt;cite&gt;/dsmblog/&lt;/cite&gt;. На github хранится только код без результирующего сайта, Сам итоговый сайт будет размещён отдельно (подробнее в следующем разделе. Для этого потом папку &lt;cite&gt;output/&lt;/cite&gt; нужно будет переименовать в &lt;cite&gt;/dsmblog/&lt;/cite&gt;.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id11"&gt;
+&lt;div class="section" id="id7"&gt;
 &lt;h3&gt;Заливаем код&lt;/h3&gt;
 &lt;p&gt;Добавляем свои файлы в индекс git:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git add .
@@ -181,8 +181,8 @@ git push
 &lt;p&gt;Проходим авторизацию (если не используем SSL), заходим на сайт &lt;a class="reference external" href="https://github.com"&gt;https://github.com&lt;/a&gt; и авторизируемся (или обновляем страницу если уже там) и наблюдаем изменения.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id12"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id19"&gt;github как веб-хостер&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="id8"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id20"&gt;github как веб-хостер&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Веб-хостинг для проектов github располагается на сайте &lt;a class="reference external" href="https://pages.github.com"&gt;https://pages.github.com&lt;/a&gt; сайты называются Pages, подробная справка по адресу &lt;a class="reference external" href="https://help.github.com/categories/github-pages-basics/"&gt;https://help.github.com/categories/github-pages-basics/&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Поддерживаются два типа страниц: страница пользователя (вариант с организацией я не рассматриваю) и страница проекта. Страницы (любого типа) можно создать (и потом редактировать) с помощью неплохого, простого генератора, который имеет небольшое количество довольно симпатичных шаблонов (правда, не отзывчивых).&lt;/p&gt;
 &lt;p&gt;В учебно-практических целях остановился на таком варианте:&lt;/p&gt;
@@ -190,14 +190,14 @@ git push
 &lt;li&gt;создаю персональный сайт, где размещаю краткую информацию о себе и ссылки на свои проекты;&lt;/li&gt;
 &lt;li&gt;создаю сайт проекта dsmblog куда помещаю созданный статический блог.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="section" id="id13"&gt;
+&lt;div class="section" id="id9"&gt;
 &lt;h3&gt;Персональный сайт&lt;/h3&gt;
 &lt;p&gt;Персональный сайт решил сделать с помощью встроенного генератора.&lt;/p&gt;
-&lt;p&gt;Для этого строго по &lt;a class="reference external" href="https://help.github.com/articles/creating-pages-with-the-automatic-generator/"&gt;инструкции&lt;/a&gt; создаю проект dmisem.github.io, и для нового проекта создаю сайт с помощью генератора (потом изменить с помощью генератора можно зайдя в меню Settings).&lt;/p&gt;
+&lt;p&gt;Для этого строго по &lt;a class="reference external" href="https://help.github.com/articles/creating-pages-with-the-automatic-generator"&gt;инструкции по генерированию сайта&lt;/a&gt; создаю проект dmisem.github.io, и для нового проекта создаю сайт с помощью генератора (потом изменить с помощью генератора можно зайдя в меню Settings).&lt;/p&gt;
 &lt;p&gt;На первом этапе корректируем на языке Markdown (сайт содержит довольно подробную инструкцию по markdown) наполнение, созданное генератором. На втором выбираем шаблон. Через несколько минут сайт будет доступен по адресу &lt;a class="reference external" href="http://dmisem.github.io/"&gt;http://dmisem.github.io/&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id15"&gt;
-&lt;h3&gt;Статический блог (страницаа проекта).&lt;/h3&gt;
+&lt;div class="section" id="id10"&gt;
+&lt;h3&gt;Статический блог (страница проекта).&lt;/h3&gt;
 &lt;p&gt;Суть создания страницы проекта − создание независимой ветки gh-pages и размещение там статического сайта.&lt;/p&gt;
 &lt;p&gt;Самый простой способ - создать страницу с помощью генератора (через команду меню Settings). Заодно можно посмотреть что содержит стандартная страница.&lt;/p&gt;
 &lt;p&gt;Далее клонируем ветку внутрь папки проекта (таким образом внутри папки dsmblog будет создана ещё одна папка dsmblog) и инициализируем её:&lt;/p&gt;
@@ -216,8 +216,8 @@ git push
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id16"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id20"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="id11"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id21"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Автоматизировать внесение изменений кода на github смысла не вижу.&lt;/p&gt;
 &lt;p&gt;А вот работу с созданным сайтом вижу по такой схеме:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -246,7 +246,7 @@ pelican -o dsmblog content
 &lt;li&gt;&lt;a class="reference internal" href="#id4" id="id16"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id5" id="id17"&gt;Установка&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id6" id="id18"&gt;Первый блог&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id13" id="id19"&gt;Статьи-продолжения&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id12" id="id19"&gt;Статьи-продолжения&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id4"&gt;
@@ -260,7 +260,7 @@ pelican -o dsmblog content
 &lt;div class="section" id="id5"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id17"&gt;Установка&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Установка довольно простая. Через pip.&lt;/p&gt;
-&lt;p&gt;Поэтому, сначала создаём виртуальное окружение (я использую &lt;a class="reference external" href="http://virtualenvwrapper.readthedocs.org/"&gt;virtualenvwrapper&lt;/a&gt;):&lt;/p&gt;
+&lt;p&gt;Поэтому, сначала создаём виртуальное окружение (я использую &lt;a class="reference external" href="http://virtualenvwrapper.readthedocs.org"&gt;virtualenvwrapper&lt;/a&gt;):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;mkvirtualenv -a blog_project_path pelican
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Устанавливаем pelican:&lt;/p&gt;
@@ -269,7 +269,7 @@ pelican -o dsmblog content
 &lt;p&gt;или последнюю версию с &lt;a class="reference external" href="https://github.com/getpelican/pelican"&gt;github&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;pip install -e &lt;span class="s2"&gt;&amp;quot;git+https://github.com/getpelican/pelican.git#egg=pelican&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил &lt;a class="reference external" href="https://github.com/Rykka/riv.vim"&gt;riv&lt;/a&gt; и работать с текстом в &lt;a class="reference external" href="http://www.vim.org/"&gt;vim&lt;/a&gt; стало совсем удобно. К тому же, ReStructuredText используется &lt;a class="reference external" href="http://sphinx-doc.org/"&gt;sphinx&lt;/a&gt; для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.&lt;/p&gt;
+&lt;p&gt;Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил &lt;a class="reference external" href="https://github.com/Rykka/riv.vim"&gt;riv&lt;/a&gt; и работать с текстом в &lt;a class="reference external" href="http://www.vim.org"&gt;vim&lt;/a&gt; стало совсем удобно. К тому же, ReStructuredText используется &lt;a class="reference external" href="http://sphinx-doc.org"&gt;sphinx&lt;/a&gt; для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.&lt;/p&gt;
 &lt;p&gt;Так как я sphinx пока не использую достаточно docutils (его устанавливать не нужно, он идет в зависимостях пеликана).&lt;/p&gt;
 &lt;p&gt;Для выбравших Markdown:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;pip install markdown
@@ -285,7 +285,7 @@ pelican -o dsmblog content
 &lt;li&gt;&lt;a class="reference internal" href="#id8" id="id20"&gt;Создаем каркас проекта&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id9" id="id21"&gt;Создаем первую статью&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id10" id="id22"&gt;Устанавливает тему&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id12" id="id23"&gt;Конфигурируем&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id11" id="id23"&gt;Конфигурируем&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id8"&gt;
@@ -314,7 +314,7 @@ Using project associated with current virtual environment.Will save to:
 &amp;gt; How many articles per page &lt;span class="k"&gt;do&lt;/span&gt; you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt;
 &amp;gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
 &amp;gt; Do you want an auto-reload &lt;span class="p"&gt;&amp;amp;&lt;/span&gt; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
-&amp;gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want to upload your website
 &amp;gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
 &amp;gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
 &amp;gt; Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
@@ -402,7 +402,7 @@ Done. Your new project is available at /home/*********
 &lt;p&gt;При этом нужно, чтобы был установлен параметр&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RELATIVE_URLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Довольно большой перечень шаблонов можно найти на &lt;a class="reference external" href="https://github.com/getpelican/pelican-themes"&gt;хабе&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Довольно большой перечень шаблонов можно найти на &lt;a class="reference external" href="https://github.com/getpelican/pelican-themes"&gt;гитхабе&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Для себя хотел адаптивный шаблон, поэтому выбрал &lt;a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3"&gt;pelican-bootstrap3&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Опять же, возможные вариаты установки хорошо описаны а сайте. Как вариант скопировать в подпапку проекта &lt;code class="bash"&gt;themes&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;themes
@@ -412,7 +412,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;Другой вариант установить тему в виртуальное окружение pelican (так я его назвал в начале статьи), потом установить через &lt;code class="bash"&gt;pelican-themes&lt;/code&gt; и подключать только по названию. В этом случае, легко можно создавать несколько блогов в одном окружении с этой темой.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id6"&gt;Первый блог&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id12"&gt;
+&lt;div class="section" id="id11"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Конфигурируем&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Конфигурация блога задается с помощью параметров (переменных) в файле &lt;tt class="docutils literal"&gt;pelicanconf.py&lt;/tt&gt;. Полный перечень переменных определяется темой.&lt;/p&gt;
 &lt;p&gt;Сущестувует рекомендация разделять файл конфигурации, во-первых, для обеспечения конфиденциальности (персональные данные хранить в отдельном файле и не синхронизировать их с хостингом (включить в &lt;tt class="docutils literal"&gt;.gitignore&lt;/tt&gt;)), во-вторых, при большом объему логически разделять.&lt;/p&gt;
@@ -424,11 +424,12 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;&lt;a class="reference internal" href="#id2"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id13"&gt;
+&lt;div class="section" id="id12"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id19"&gt;Статьи-продолжения&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="pelican-github.html"&gt;Переселяем пеликана на github&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;!-- Links: --&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 17:20:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-30:articles/ru/pelican-minstart.html</guid><category>blog</category><category>pelican</category><category>start</category></item><item><title>Задачи и цели проекта dsmblog (Записки ДСМ)</title><link>http://localhost:8000/articles/ru/dsmblog-todo.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
