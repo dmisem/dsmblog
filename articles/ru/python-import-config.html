@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru"
+>
+<head>
+    <title>Импорт конфигурационных файлов python - Записки ДСМ</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="../../articles/ru/python-import-config.html">
+
+        <meta name="author" content="ДСМ" />
+        <meta name="keywords" content="python" />
+        <meta name="description" content="Рассматривается использование конфигурационных файлов написанных на python через механизм импортирования модулей." />
+
+        <meta property="og:site_name" content="Записки ДСМ" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Импорт конфигурационных файлов python"/>
+        <meta property="og:url" content="../../articles/ru/python-import-config.html"/>
+        <meta property="og:description" content="Рассматривается использование конфигурационных файлов написанных на python через механизм импортирования модулей."/>
+        <meta property="article:published_time" content="2015-07-09" />
+            <meta property="article:section" content="python" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:author" content="ДСМ" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="../../theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../" class="navbar-brand">
+Записки ДСМ            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="../../category/o.html">О ...</a>
+                        </li>
+                        <li class="active">
+                            <a href="../../category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="../../category/razmetka.html">Разметка</a>
+                        </li>
+                        <li >
+                            <a href="../../category/veb.html">Веб</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="../../articles/ru/python-import-config.html"
+                       rel="bookmark"
+                       title="Permalink to Импорт конфигурационных файлов python">
+                        Импорт конфигурационных файлов python
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-07-09T00:00:00+03:00"> Чт. 09 Июль 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="../../tag/python.html">python</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Продолжаю (после перерыва) заметки для себя. Сейчас немного из области изучения python.</p>
+<p>Словари в python видятся мне как очень удобный инструмент для ведения конфигурационных файлов (любого вида, любой вложенности). Например, такого типа:</p>
+<div class="highlight"><pre><span class="n">Confg</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;num&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="s">&#39;text&#39;</span><span class="p">:</span> <span class="s">&#39;there is a text&#39;</span><span class="p">,</span>
+         <span class="s">&#39;list&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span>
+         <span class="s">&#39;dict&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;d1&#39;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span> <span class="s">&#39;d2&#39;</span><span class="p">:</span> <span class="s">&#39;werwe&#39;</span><span class="p">}}</span>
+</pre></div>
+<p>Допустим, что такие файлы расположены в некоторой папке (т.е. в папке может быть нескольео питоновских файлов, и в каждом файле несколько конфигурационных объектов, предположительно словарей, но, в принципе, любых). Нужно собрать их вместе в один словарь.</p>
+<p>Покопавшись в доках (получилось поработать со стандратной документацией благодаря ограниченному доступу к Интернету) понял, что нужно использовать функцию <code class="py python"><span class="n">import_module</span></code> из модуля <code class="py python"><span class="n">importlib</span></code>. Предварительно нужно добавить папку в пути поиска инструкции import (список <code class="py python"><span class="n">sys</span><span class="o">.</span><span class="n">path</span></code>)</p>
+<p>Если учесть возможность использования генераторов, получается такой довольно компактный &quot;питонистичный&quot; код:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">isdir</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">path</span> <span class="k">as</span> <span class="n">sp</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">import_module</span> <span class="k">as</span> <span class="n">im</span>
+
+
+<span class="k">def</span> <span class="nf">_main</span><span class="p">():</span>
+    <span class="c"># Берём некую папку (с проверкой существования)</span>
+    <span class="n">PApp</span> <span class="o">=</span> <span class="s">r&#39;/home/dsm/prg/python/set_proxy/app_cfg&#39;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">(</span><span class="n">PApp</span><span class="p">):</span> <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="c"># Получаем список py файлов в папке PApp,</span>
+    <span class="c"># и если не найдено выходим,</span>
+    <span class="c"># если найдено - добавляем в пути поискa и импортируем</span>
+    <span class="n">apps</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="n">PApp</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;.py&#39;</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">apps</span><span class="p">:</span> <span class="k">return</span> <span class="p">{}</span>
+    <span class="n">sp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PApp</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">{</span><span class="n">m</span><span class="o">.</span><span class="n">__name__</span><span class="p">:</span>
+         <span class="p">{</span><span class="n">o</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">__getattribute__</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">o</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">)}</span>
+         <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="n">im</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">apps</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="n">g</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">_main</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">d</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;{0} =&gt; {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;not found&#39;</span><span class="p">)</span>
+</pre></div>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://ua.linkedin.com/pub/dmitry-semenov/5/994/a6a"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/dmisem"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://bitbucket.org/dmisem"><i class="fa fa-bitbucket-square fa-lg"></i> bitbucket</a></li>
+                <li class="list-group-item"><a href="mailto:dmitry.5674@gmail.com"><i class="fa fa-envelope-square fa-lg"></i> e-mail</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="list-group-item"><a href="../../"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://jinja.pocoo.org/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://docutils.sourceforge.net/rst.html" target="_blank">
+                ReStructuredText
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 ДСМ
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="../../theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../theme/js/respond.min.js"></script>
+
+
+</body>
+</html>

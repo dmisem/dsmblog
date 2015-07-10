@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Записки ДСМ</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/dsm.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2014-12-21T00:00:00+02:00</updated><entry><title>Переселяем pelican на github.</title><link href="http://localhost:8000/articles/ru/pelican-github.html" rel="alternate"></link><updated>2014-12-21T00:00:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-12-15:articles/ru/pelican-github.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Записки ДСМ</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/dsm.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2015-07-10T00:00:00+03:00</updated><entry><title>Импорт конфигурационных файлов python</title><link href="http://localhost:8000/articles/ru/python-import-config.html" rel="alternate"></link><updated>2015-07-09T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2015-07-09:articles/ru/python-import-config.html</id><summary type="html">&lt;p&gt;Продолжаю (после перерыва) заметки для себя. Сейчас немного из области изучения python.&lt;/p&gt;
+&lt;p&gt;Словари в python видятся мне как очень удобный инструмент для ведения конфигурационных файлов (любого вида, любой вложенности). Например, такого типа:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Confg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;num&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+         &lt;span class="s"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;there is a text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+         &lt;span class="s"&gt;&amp;#39;list&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)],&lt;/span&gt;
+         &lt;span class="s"&gt;&amp;#39;dict&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;d1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;d2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;werwe&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Допустим, что такие файлы расположены в некоторой папке (т.е. в папке может быть нескольео питоновских файлов, и в каждом файле несколько конфигурационных объектов, предположительно словарей, но, в принципе, любых). Нужно собрать их вместе в один словарь.&lt;/p&gt;
+&lt;p&gt;Покопавшись в доках (получилось поработать со стандратной документацией благодаря ограниченному доступу к Интернету) понял, что нужно использовать функцию &lt;code class="py python"&gt;&lt;span class="n"&gt;import_module&lt;/span&gt;&lt;/code&gt; из модуля &lt;code class="py python"&gt;&lt;span class="n"&gt;importlib&lt;/span&gt;&lt;/code&gt;. Предварительно нужно добавить папку в пути поиска инструкции import (список &lt;code class="py python"&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Если учесть возможность использования генераторов, получается такой довольно компактный &amp;quot;питонистичный&amp;quot; код:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;listdir&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os.path&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;isdir&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;sp&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;importlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;import_module&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c"&gt;# Берём некую папку (с проверкой существования)&lt;/span&gt;
+    &lt;span class="n"&gt;PApp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;r&amp;#39;/home/dsm/prg/python/set_proxy/app_cfg&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;isdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PApp&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+
+    &lt;span class="c"&gt;# Получаем список py файлов в папке PApp,&lt;/span&gt;
+    &lt;span class="c"&gt;# и если не найдено выходим,&lt;/span&gt;
+    &lt;span class="c"&gt;# если найдено - добавляем в пути поискa и импортируем&lt;/span&gt;
+    &lt;span class="n"&gt;apps&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;listdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PApp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;endswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="n"&gt;sp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PApp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+         &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__getattribute__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;g&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;_main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;{0} =&amp;gt; {1}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;not found&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+</summary><category term="python"></category></entry><entry><title>Переселяем pelican на github.</title><link href="http://localhost:8000/articles/ru/pelican-github.html" rel="alternate"></link><updated>2015-07-10T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-12-15:articles/ru/pelican-github.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id18"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
@@ -61,7 +101,7 @@
     &lt;span class="nv"&gt;safecrlf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;  &lt;span class="c"&gt;#  settings for CRLF conversion&lt;/span&gt;
     &lt;span class="nv"&gt;excludesfile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ~/.gitexcludes  &lt;span class="c"&gt;# like .gitignore but for all projects&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;credential&lt;span class="o"&gt;]&lt;/span&gt;
-    &lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;3600  &lt;span class="c"&gt;# allow to input username and password once per timeout&lt;/span&gt;
+    &lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3600&lt;/span&gt;  &lt;span class="c"&gt;# allow to input username and password once per timeout&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;user&lt;span class="o"&gt;]&lt;/span&gt;
     &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ДСМ  &lt;span class="c"&gt;# user name&lt;/span&gt;
     &lt;span class="nv"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; dmitry.5674@gmail.com  &lt;span class="c"&gt;# email address that will be associated with your Git commits&lt;/span&gt;
@@ -70,7 +110,7 @@
     &lt;span class="nv"&gt;safecrlf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;  &lt;span class="c"&gt;#  settings for CRLF conversion&lt;/span&gt;
     &lt;span class="nv"&gt;excludesfile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ~/.gitexcludes  &lt;span class="c"&gt;# like .gitignore but for all projects&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;credential&lt;span class="o"&gt;]&lt;/span&gt;
-    &lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;3600  &lt;span class="c"&gt;# allow to input username and password once per timeout&lt;/span&gt;
+    &lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3600&lt;/span&gt;  &lt;span class="c"&gt;# allow to input username and password once per timeout&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Есть вопрос выбора между SSL и HTTPS. Первый вариант (SSL), вроде даёт возможность не вводить каждый раз пароль и под Linux реализуется элементарно. Второй (HTTPS) рекомендован githib-ом + в комбинации с параметром &lt;code class="bash"&gt;&lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;3600&lt;/code&gt; позволяет вводить пароль только один раз за сеанс работы. В итоге я остановился на HTTPS (пошёл по пути наименьшего сопротивления).&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
@@ -106,6 +146,13 @@
 &lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Что должно быть в &lt;code class="bash"&gt;local_settings.py&lt;/code&gt;, по моему, очевидно.&lt;/p&gt;
+&lt;p&gt;При работе с python3.4 возник нехороший нюанс - &lt;code class="py python"&gt;&lt;span class="kn"&gt;import&lt;/span&gt;&lt;/code&gt; не подтягивает фалы, которые расположены в той же папке, что и &lt;code class="bash"&gt;pelicanconf.py&lt;/code&gt;, решается явным добавлением пути проекта в &lt;code class="py python"&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="n"&gt;SITE_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;realpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SITE_ROOT&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;local_settings&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;ls&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Мой &lt;code class="bash"&gt;.gitignore&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Generated by vim&lt;/span&gt;
 .ropeproject/
@@ -192,12 +239,12 @@ git push
 
 &lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="nb"&gt;pwd&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/dsmblog&amp;quot;&lt;/span&gt;
 &lt;span class="nv"&gt;CDT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;date +%Y-%m-%d&lt;span class="se"&gt;\ &lt;/span&gt;%H:%M&lt;span class="sb"&gt;`&lt;/span&gt;  &lt;span class="c"&gt;# Current datetime&lt;/span&gt;
-&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;git --git-dir=${DIR}/.git --work-tree=${DIR} &amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;git --git-dir=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.git --work-tree=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;
 
 pelican -o dsmblog content
 &lt;span class="nb"&gt;echo &lt;/span&gt;Generated
 
-&lt;span class="k"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="k"&gt;}&lt;/span&gt;add . &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="k"&gt;}&lt;/span&gt;commit -a -m &lt;span class="s2"&gt;&amp;quot;Autogenerate: ${CDT}&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="k"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="k"&gt;}&lt;/span&gt;push
+&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;add . &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;commit -a -m &lt;span class="s2"&gt;&amp;quot;Autogenerate: &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;CDT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;GT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;push
 &lt;span class="nb"&gt;echo &lt;/span&gt;Pushed!
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
@@ -270,11 +317,11 @@ Using project associated with current virtual environment.Will save to:
 &amp;gt; Who will be the author of this web site? ДСМ
 &amp;gt; What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;en&lt;span class="o"&gt;]&lt;/span&gt; ru
 &amp;gt; Do you want to specify a URL prefix? e.g., http://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
-&amp;gt; What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; http://localhost:8000
+&amp;gt; What is your URL prefix? &lt;span class="o"&gt;(&lt;/span&gt;see above example&lt;span class="p"&gt;;&lt;/span&gt; no trailing slash&lt;span class="o"&gt;)&lt;/span&gt; http://localhost:8000
 &amp;gt; Do you want to &lt;span class="nb"&gt;enable &lt;/span&gt;article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
-&amp;gt; How many articles per page &lt;span class="k"&gt;do &lt;/span&gt;you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt;
+&amp;gt; How many articles per page &lt;span class="k"&gt;do&lt;/span&gt; you want? &lt;span class="o"&gt;[&lt;/span&gt;10&lt;span class="o"&gt;]&lt;/span&gt;
 &amp;gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
-&amp;gt; Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
+&amp;gt; Do you want an auto-reload &lt;span class="p"&gt;&amp;amp;&lt;/span&gt; simpleHTTP script to assist with theme and site development? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt;
 &amp;gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
 &amp;gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
 &amp;gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt;
@@ -568,13 +615,13 @@ https://github.com/DandyDev/pelican-bootstrap3.git
   ----
 
 &lt;span class="p"&gt;  ..&lt;/span&gt; &lt;span class="ow"&gt;contents&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; Зміст.
-      :backlinks: entry
+      &lt;span class="nc"&gt;:backlinks:&lt;/span&gt; &lt;span class="nf"&gt;entry&lt;/span&gt;
       &lt;span class="nc"&gt;:depth:&lt;/span&gt; &lt;span class="nf"&gt;4&lt;/span&gt;
 
 и небольшой скрипт, который соберет все вкучу:
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.. include:: head.rst&amp;quot;&lt;/span&gt; &amp;gt; index.rst
-find ./S*/ -name &lt;span class="s2"&gt;&amp;quot;*.rst&amp;quot;&lt;/span&gt; | sort | sed &lt;span class="s1"&gt;&amp;#39;s|\.\/|..  iclude:: |g&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; index.rst
+find ./S*/ -name &lt;span class="s2"&gt;&amp;quot;*.rst&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sort &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s|\.\/|..  iclude:: |g&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; index.rst
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;В результате получаем файл, index.rst из которого с помощью rst2html rst2odt получаем нужные форматы. Всё-бы хорошо, но есть несколько &amp;quot;но&amp;quot;, решение которых в Интернете по-быстрому найти не получилось:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -661,10 +708,10 @@ find ./S*/ -name &lt;span class="s2"&gt;&amp;quot;*.rst&amp;quot;&lt;/span&gt; |
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.. include:: head.rst&amp;quot;&lt;/span&gt;
 &lt;span class="nb"&gt;echo&lt;/span&gt;
 &lt;span class="nv"&gt;txt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;..  container:: textbase\n    \n    &amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;for &lt;/span&gt;f in &lt;span class="sb"&gt;`&lt;/span&gt;find ./S*/ -name &lt;span class="s2"&gt;&amp;quot;*.rst&amp;quot;&lt;/span&gt; -print | sort&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; f in &lt;span class="sb"&gt;`&lt;/span&gt;find ./S*/ -name &lt;span class="s2"&gt;&amp;quot;*.rst&amp;quot;&lt;/span&gt; -print &lt;span class="p"&gt;|&lt;/span&gt; sort&lt;span class="sb"&gt;`&lt;/span&gt;
 &lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;cat &lt;span class="s2"&gt;&amp;quot;$f&amp;quot;&lt;/span&gt; | sed &lt;span class="s1"&gt;&amp;#39;$ G&amp;#39;&lt;/span&gt; | sed &lt;span class="s2"&gt;&amp;quot;:a;/^[А-ЯІЇ]/N; s/^\([А-ЯІЇ]\)\([^\n]*\)\(\n$\)/&amp;quot;&amp;quot;$txt&amp;quot;&amp;quot;\1\2\n/g;ta&amp;quot;&lt;/span&gt; | sed &lt;span class="s2"&gt;&amp;quot;s/^тт /&amp;quot;&amp;quot;$txt$&amp;quot;&amp;quot;/g&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;done&lt;/span&gt;
+    cat &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;$ G&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s2"&gt;&amp;quot;:a;/^[А-ЯІЇ]/N; s/^\([А-ЯІЇ]\)\([^\n]*\)\(\n&lt;/span&gt;&lt;span class="nv"&gt;$\&lt;/span&gt;&lt;span class="s2"&gt;)/&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$txt&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;\1\2\n/g;ta&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s2"&gt;&amp;quot;s/^тт /&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$txt$&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;/g&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;done&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Небольшой &lt;em&gt;комментарий:&lt;/em&gt;&lt;/p&gt;
 &lt;ul class="simple"&gt;

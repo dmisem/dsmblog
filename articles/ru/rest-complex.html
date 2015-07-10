@@ -57,6 +57,9 @@
                         <li >
                             <a href="../../category/o.html">О ...</a>
                         </li>
+                        <li >
+                            <a href="../../category/python.html">Python</a>
+                        </li>
                         <li class="active">
                             <a href="../../category/razmetka.html">Разметка</a>
                         </li>
@@ -94,7 +97,7 @@
 <footer class="post-info">
     <span class="label label-default">Date</span>
     <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2014-08-30T00:00:00"> Сб. 30 Август 2014</time>
+        <i class="fa fa-calendar"></i><time datetime="2014-08-30T00:00:00+03:00"> Сб. 30 Август 2014</time>
     </span>
 
 
@@ -177,13 +180,13 @@
   ----
 
 <span class="p">  ..</span> <span class="ow">contents</span><span class="p">::</span> Зміст.
-      :backlinks: entry
+      <span class="nc">:backlinks:</span> <span class="nf">entry</span>
       <span class="nc">:depth:</span> <span class="nf">4</span>
 
 и небольшой скрипт, который соберет все вкучу:
 </pre></div>
 <div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;.. include:: head.rst&quot;</span> &gt; index.rst
-find ./S*/ -name <span class="s2">&quot;*.rst&quot;</span> | sort | sed <span class="s1">&#39;s|\.\/|..  iclude:: |g&#39;</span> &gt;&gt; index.rst
+find ./S*/ -name <span class="s2">&quot;*.rst&quot;</span> <span class="p">|</span> sort <span class="p">|</span> sed <span class="s1">&#39;s|\.\/|..  iclude:: |g&#39;</span> &gt;&gt; index.rst
 </pre></div>
 <p>В результате получаем файл, index.rst из которого с помощью rst2html rst2odt получаем нужные форматы. Всё-бы хорошо, но есть несколько &quot;но&quot;, решение которых в Интернете по-быстрому найти не получилось:</p>
 <ul class="simple">
@@ -270,10 +273,10 @@ find ./S*/ -name <span class="s2">&quot;*.rst&quot;</span> | sort | sed <span cl
 <div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;.. include:: head.rst&quot;</span>
 <span class="nb">echo</span>
 <span class="nv">txt</span><span class="o">=</span><span class="s2">&quot;..  container:: textbase\n    \n    &quot;</span>
-<span class="k">for </span>f in <span class="sb">`</span>find ./S*/ -name <span class="s2">&quot;*.rst&quot;</span> -print | sort<span class="sb">`</span>
+<span class="k">for</span> f in <span class="sb">`</span>find ./S*/ -name <span class="s2">&quot;*.rst&quot;</span> -print <span class="p">|</span> sort<span class="sb">`</span>
 <span class="k">do</span>
-<span class="k">    </span>cat <span class="s2">&quot;$f&quot;</span> | sed <span class="s1">&#39;$ G&#39;</span> | sed <span class="s2">&quot;:a;/^[А-ЯІЇ]/N; s/^\([А-ЯІЇ]\)\([^\n]*\)\(\n$\)/&quot;&quot;$txt&quot;&quot;\1\2\n/g;ta&quot;</span> | sed <span class="s2">&quot;s/^тт /&quot;&quot;$txt$&quot;&quot;/g&quot;</span>
-<span class="k">done</span>
+    cat <span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">&quot;</span> <span class="p">|</span> sed <span class="s1">&#39;$ G&#39;</span> <span class="p">|</span> sed <span class="s2">&quot;:a;/^[А-ЯІЇ]/N; s/^\([А-ЯІЇ]\)\([^\n]*\)\(\n</span><span class="nv">$\</span><span class="s2">)/&quot;&quot;</span><span class="nv">$txt</span><span class="s2">&quot;&quot;\1\2\n/g;ta&quot;</span> <span class="p">|</span> sed <span class="s2">&quot;s/^тт /&quot;&quot;</span><span class="nv">$txt$&quot;</span><span class="s2">&quot;</span>/g<span class="s2">&quot;</span>
+<span class="s2">done</span>
 </pre></div>
 <p>Небольшой <em>комментарий:</em></p>
 <ul class="simple">
@@ -368,46 +371,6 @@ find ./S*/ -name <span class="s2">&quot;*.rst&quot;</span> | sort | sed <span cl
 
             <li class="list-group-item"><a href="../../"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
-                    <li class="list-group-item tag-1">
-                        <a href="../../tag/blog.html">
-                            blog
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-2">
-                        <a href="../../tag/pelican.html">
-                            pelican
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="../../tag/about.html">
-                            about
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="../../tag/start.html">
-                            start
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="../../tag/docutils.html">
-                            docutils
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="../../tag/restructuredtext.html">
-                            reStructuredText
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="../../tag/github.html">
-                            github
-                        </a>
-                    </li>
-                    <li class="list-group-item tag-4">
-                        <a href="../../tag/libreoffice.html">
-                            LibreOffice
-                        </a>
-                    </li>
                 </ul>
             </li>
     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
@@ -444,7 +407,7 @@ find ./S*/ -name <span class="s2">&quot;*.rst&quot;</span> | sort | sed <span cl
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2014 ДСМ
+         <div class="col-xs-10">&copy; 2015 ДСМ
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
