@@ -42,17 +42,17 @@
 </summary><category term="python"></category></entry><entry><title>Переселяем pelican на github.</title><link href="http://localhost:8000/articles/ru/pelican-github.html" rel="alternate"></link><updated>2015-07-10T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-12-15:articles/ru/pelican-github.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id3" id="id18"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#dsmblog-github" id="id19"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id13" id="id20"&gt;github как веб-хостер&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#id17" id="id21"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id3" id="id17"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#dsmblog-github" id="id18"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id12" id="id19"&gt;github как веб-хостер&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#id16" id="id20"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="id3"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id18"&gt;Предисловие&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;В предыдущих статьях, посвящённых генератору статических сайтов pelican были описаны основные &lt;a class="reference external" href="|todo|"&gt;задачи и цели&lt;/a&gt;, которые хотел решить работая с пеликаном, о описаны &lt;a class="reference external" href="|minstart|"&gt;начальные действия&lt;/a&gt; необходимые для того чтобы создать свой блог, поместить в нём пару статей и запустить на локальном сервере.&lt;/p&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id17"&gt;Предисловие&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;В предыдущих статьях, посвящённых генератору статических сайтов pelican были описаны основные &lt;a class="reference external" href="dsmblog-todo.html"&gt;задачи и цели&lt;/a&gt;, которые хотел решить работая с пеликаном, о описаны &lt;a class="reference external" href="pelican-minstart.html"&gt;начальные действия&lt;/a&gt; необходимые для того чтобы создать свой блог, поместить в нём пару статей и запустить на локальном сервере.&lt;/p&gt;
 &lt;p&gt;Следующим шагом, по плану, необходимо разместить проект на каком-либо хостинге для проектов, а результат на веб‑хостинге.&lt;/p&gt;
-&lt;div class="section" id="id6"&gt;
+&lt;div class="section" id="id5"&gt;
 &lt;h3&gt;Что нужно сделать&lt;/h3&gt;
 &lt;p&gt;Итак, ориентировочный перечень задач:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -86,8 +86,8 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dsmblog-github"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id19"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="section" id="id7"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id18"&gt;Перенос dsmblog на github&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="id6"&gt;
 &lt;h3&gt;Регистрация и установка git.&lt;/h3&gt;
 &lt;p&gt;Если ещё раньше этого сделано не было (регистрация на github и | или установка git) − самое время.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://help.github.com/articles/signing-up-for-a-new-github-account/"&gt;Регистрация на github&lt;/a&gt; предельно проста, хорошо описана (хоть и на английском, но понятно для того чтобы выбрать бесплатный вариант для обычного пользователя).&lt;/p&gt;
@@ -106,7 +106,7 @@
 &lt;p&gt;Есть вопрос выбора между SSL и HTTPS. Первый вариант (SSL), вроде даёт возможность не вводить каждый раз пароль и под Linux реализуется элементарно. Второй (HTTPS) рекомендован githib-ом + в комбинации с параметром &lt;code class="bash"&gt;&lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;3600&lt;/code&gt; позволяет вводить пароль только один раз за сеанс работы. В итоге я остановился на HTTPS (пошёл по пути наименьшего сопротивления).&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id10"&gt;
+&lt;div class="section" id="id9"&gt;
 &lt;h3&gt;Хостим код на github&lt;/h3&gt;
 &lt;p&gt;Вариант очевидный. Есть локальный dsmblog и есть одноимённый проект на github. Нужно синхронизировать. Можно, но сложно. Хотя, если на github совсем пустой проект, то не так уж и сложно. Но, как сказал классик, мы пойдём другим путём.&lt;/p&gt;
 &lt;p&gt;Сохраняем свой проект под другим именем (например, dsmblog_local):&lt;/p&gt;
@@ -120,7 +120,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Почти всё. Осталось настроить параметры синхронизации (назовём это так). Об этом в следующем подразделе.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id11"&gt;
+&lt;div class="section" id="id10"&gt;
 &lt;h3&gt;Локальные параметры&lt;/h3&gt;
 &lt;p&gt;Локальные параметры:
 * некоторые параметры из &lt;code class="bash"&gt;pelicanconf.py&lt;/code&gt;, которые не нужно выкладывать в общедоступную среду;
@@ -169,7 +169,7 @@ fabfile.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Здесь считаю нужным отметить папки &lt;cite&gt;output/&lt;/cite&gt; и &lt;cite&gt;/dsmblog/&lt;/cite&gt;. На github хранится только код без результирующего сайта, Сам итоговый сайт будет размещён отдельно (подробнее в следующем разделе. Для этого потом папку &lt;cite&gt;output/&lt;/cite&gt; нужно будет переименовать в &lt;cite&gt;/dsmblog/&lt;/cite&gt;.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id12"&gt;
+&lt;div class="section" id="id11"&gt;
 &lt;h3&gt;Заливаем код&lt;/h3&gt;
 &lt;p&gt;Добавляем свои файлы в индекс git:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git add .
@@ -181,8 +181,8 @@ git push
 &lt;p&gt;Проходим авторизацию (если не используем SSL), заходим на сайт &lt;a class="reference external" href="https://github.com"&gt;https://github.com&lt;/a&gt; и авторизируемся (или обновляем страницу если уже там) и наблюдаем изменения.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id13"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id20"&gt;github как веб-хостер&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="id12"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id19"&gt;github как веб-хостер&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Веб-хостинг для проектов github располагается на сайте &lt;a class="reference external" href="https://pages.github.com"&gt;https://pages.github.com&lt;/a&gt; сайты называются Pages, подробная справка по адресу &lt;a class="reference external" href="https://help.github.com/categories/github-pages-basics/"&gt;https://help.github.com/categories/github-pages-basics/&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Поддерживаются два типа страниц: страница пользователя (вариант с организацией я не рассматриваю) и страница проекта. Страницы (любого типа) можно создать (и потом редактировать) с помощью неплохого, простого генератора, который имеет небольшое количество довольно симпатичных шаблонов (правда, не отзывчивых).&lt;/p&gt;
 &lt;p&gt;В учебно-практических целях остановился на таком варианте:&lt;/p&gt;
@@ -190,13 +190,13 @@ git push
 &lt;li&gt;создаю персональный сайт, где размещаю краткую информацию о себе и ссылки на свои проекты;&lt;/li&gt;
 &lt;li&gt;создаю сайт проекта dsmblog куда помещаю созданный статический блог.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="section" id="id14"&gt;
+&lt;div class="section" id="id13"&gt;
 &lt;h3&gt;Персональный сайт&lt;/h3&gt;
 &lt;p&gt;Персональный сайт решил сделать с помощью встроенного генератора.&lt;/p&gt;
 &lt;p&gt;Для этого строго по &lt;a class="reference external" href="https://help.github.com/articles/creating-pages-with-the-automatic-generator/"&gt;инструкции&lt;/a&gt; создаю проект dmisem.github.io, и для нового проекта создаю сайт с помощью генератора (потом изменить с помощью генератора можно зайдя в меню Settings).&lt;/p&gt;
 &lt;p&gt;На первом этапе корректируем на языке Markdown (сайт содержит довольно подробную инструкцию по markdown) наполнение, созданное генератором. На втором выбираем шаблон. Через несколько минут сайт будет доступен по адресу &lt;a class="reference external" href="http://dmisem.github.io/"&gt;http://dmisem.github.io/&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id16"&gt;
+&lt;div class="section" id="id15"&gt;
 &lt;h3&gt;Статический блог (страницаа проекта).&lt;/h3&gt;
 &lt;p&gt;Суть создания страницы проекта − создание независимой ветки gh-pages и размещение там статического сайта.&lt;/p&gt;
 &lt;p&gt;Самый простой способ - создать страницу с помощью генератора (через команду меню Settings). Заодно можно посмотреть что содержит стандартная страница.&lt;/p&gt;
@@ -216,8 +216,8 @@ git push
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="id17"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id21"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="id16"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id20"&gt;Автоматизация и синхронизация&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Автоматизировать внесение изменений кода на github смысла не вижу.&lt;/p&gt;
 &lt;p&gt;А вот работу с созданным сайтом вижу по такой схеме:&lt;/p&gt;
 &lt;ul class="simple"&gt;
