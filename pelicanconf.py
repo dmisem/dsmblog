@@ -1,7 +1,10 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
 
+# from __future__ import unicode_literals
+import os
+import sys
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+sys.path.append(SITE_ROOT)
 import local_settings as ls
 
 AUTHOR = ls.AUTHOR
@@ -12,7 +15,6 @@ TIMEZONE = ls.TIMEZONE
 LOCALE = ls.LOCALE
 DEFAULT_LANG = ls.DEFAULT_LANG
 
-OUTPUT_PATH = 'articles/'
 ARTICLE_URL = 'articles/{lang}/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL
 ARTICLE_LANG_URL = ARTICLE_URL
@@ -46,7 +48,3 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 THEME = "themes/pelican-bootstrap3"
-
-
-
-

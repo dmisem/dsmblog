@@ -7,9 +7,8 @@ Temporary for testing possibility
 :category: about
 :author: ДСМ
 :lang: en
+:status: draft
+:translate: false
 
-.. :translate: false
-
-.. :status: draft
 
 It is page for possibilities testing.

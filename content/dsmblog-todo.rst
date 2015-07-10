@@ -4,7 +4,7 @@
 :date:  2014-11-26 19:37
 :modified: 2014-11-26 19:37
 :tags: blog, about
-:category: Об!
+:category: О ...
 :slug: dsmblog-todo
 :author: ДСМ
 :summary: Перечень задач (целей) проекта "Записки ДСМ" в свободной форме изложения.
