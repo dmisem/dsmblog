@@ -174,15 +174,6 @@
     <span class="nv">excludesfile</span> <span class="o">=</span> ~/.gitexcludes  <span class="c"># like .gitignore but for all projects</span>
 <span class="o">[</span>credential<span class="o">]</span>
     <span class="nv">helper</span> <span class="o">=</span> cache --timeout<span class="o">=</span><span class="m">3600</span>  <span class="c"># allow to input username and password once per timeout</span>
-<span class="o">[</span>user<span class="o">]</span>
-    <span class="nv">name</span> <span class="o">=</span> ДСМ  <span class="c"># user name</span>
-    <span class="nv">email</span> <span class="o">=</span> dmitry.5674@gmail.com  <span class="c"># email address that will be associated with your Git commits</span>
-<span class="o">[</span>core<span class="o">]</span>
-    <span class="nv">autocrlf</span> <span class="o">=</span> input  <span class="c"># settings for CRLF conversion</span>
-    <span class="nv">safecrlf</span> <span class="o">=</span> <span class="nb">true</span>  <span class="c">#  settings for CRLF conversion</span>
-    <span class="nv">excludesfile</span> <span class="o">=</span> ~/.gitexcludes  <span class="c"># like .gitignore but for all projects</span>
-<span class="o">[</span>credential<span class="o">]</span>
-    <span class="nv">helper</span> <span class="o">=</span> cache --timeout<span class="o">=</span><span class="m">3600</span>  <span class="c"># allow to input username and password once per timeout</span>
 </pre></div>
 <p>Есть вопрос выбора между SSL и HTTPS. Первый вариант (SSL), вроде даёт возможность не вводить каждый раз пароль и под Linux реализуется элементарно. Второй (HTTPS) рекомендован githib-ом + в комбинации с параметром <code class="bash"><span class="nv">helper</span> <span class="o">=</span> cache --timeout<span class="o">=</span>3600</code> позволяет вводить пароль только один раз за сеанс работы. В итоге я остановился на HTTPS (пошёл по пути наименьшего сопротивления).</p>
 <p><a class="reference internal" href="#id1">Содержание</a></p>

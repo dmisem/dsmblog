@@ -102,15 +102,6 @@
     &lt;span class="nv"&gt;excludesfile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ~/.gitexcludes  &lt;span class="c"&gt;# like .gitignore but for all projects&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;credential&lt;span class="o"&gt;]&lt;/span&gt;
     &lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3600&lt;/span&gt;  &lt;span class="c"&gt;# allow to input username and password once per timeout&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;user&lt;span class="o"&gt;]&lt;/span&gt;
-    &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ДСМ  &lt;span class="c"&gt;# user name&lt;/span&gt;
-    &lt;span class="nv"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; dmitry.5674@gmail.com  &lt;span class="c"&gt;# email address that will be associated with your Git commits&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;core&lt;span class="o"&gt;]&lt;/span&gt;
-    &lt;span class="nv"&gt;autocrlf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; input  &lt;span class="c"&gt;# settings for CRLF conversion&lt;/span&gt;
-    &lt;span class="nv"&gt;safecrlf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;  &lt;span class="c"&gt;#  settings for CRLF conversion&lt;/span&gt;
-    &lt;span class="nv"&gt;excludesfile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ~/.gitexcludes  &lt;span class="c"&gt;# like .gitignore but for all projects&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt;credential&lt;span class="o"&gt;]&lt;/span&gt;
-    &lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3600&lt;/span&gt;  &lt;span class="c"&gt;# allow to input username and password once per timeout&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Есть вопрос выбора между SSL и HTTPS. Первый вариант (SSL), вроде даёт возможность не вводить каждый раз пароль и под Linux реализуется элементарно. Второй (HTTPS) рекомендован githib-ом + в комбинации с параметром &lt;code class="bash"&gt;&lt;span class="nv"&gt;helper&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cache --timeout&lt;span class="o"&gt;=&lt;/span&gt;3600&lt;/code&gt; позволяет вводить пароль только один раз за сеанс работы. В итоге я остановился на HTTPS (пошёл по пути наименьшего сопротивления).&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
