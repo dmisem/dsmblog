@@ -524,7 +524,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;/div&gt;
 &lt;div class="section" id="id12"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Минимальный старт&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Описано в статье &amp;quot;&lt;a class="reference external" href="dsmblog-minstart.html"&gt;Запускаем пеликана&lt;/a&gt;&amp;quot;&lt;/p&gt;
+&lt;p&gt;Описано в статье &amp;quot;&lt;a class="reference external" href="pelican-minstart.html"&gt;Запускаем пеликана&lt;/a&gt;&amp;quot;&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Установить минимальный набор инструментов необходимый для работы с pelican.&lt;/li&gt;
 &lt;li&gt;Создать свой блог (dsmblog).&lt;/li&gt;
@@ -545,7 +545,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 19:37:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</guid><category>blog</category><category>about</category></item><item><title>reStructuredText и сложные документы.</title><link>http://localhost:8000/articles/ru/rest-complex.html</link><description>&lt;div class="contents topic" id="id2"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Fri, 10 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</guid><category>blog</category><category>about</category></item><item><title>reStructuredText и сложные документы.</title><link>http://localhost:8000/articles/ru/rest-complex.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id19"&gt;Почему и зачем&lt;/a&gt;&lt;/li&gt;

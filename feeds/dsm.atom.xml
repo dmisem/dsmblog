@@ -432,7 +432,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;&lt;a class="reference internal" href="#id2"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="blog"></category><category term="pelican"></category><category term="start"></category></entry><entry><title>Задачи и цели проекта dsmblog (Записки ДСМ)</title><link href="http://localhost:8000/articles/ru/dsmblog-todo.html" rel="alternate"></link><updated>2014-11-26T19:37:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
+</summary><category term="blog"></category><category term="pelican"></category><category term="start"></category></entry><entry><title>Задачи и цели проекта dsmblog (Записки ДСМ)</title><link href="http://localhost:8000/articles/ru/dsmblog-todo.html" rel="alternate"></link><updated>2015-07-10T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id14"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
@@ -524,7 +524,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;/div&gt;
 &lt;div class="section" id="id12"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Минимальный старт&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Описано в статье &amp;quot;&lt;a class="reference external" href="dsmblog-minstart.html"&gt;Запускаем пеликана&lt;/a&gt;&amp;quot;&lt;/p&gt;
+&lt;p&gt;Описано в статье &amp;quot;&lt;a class="reference external" href="pelican-minstart.html"&gt;Запускаем пеликана&lt;/a&gt;&amp;quot;&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Установить минимальный набор инструментов необходимый для работы с pelican.&lt;/li&gt;
 &lt;li&gt;Создать свой блог (dsmblog).&lt;/li&gt;
