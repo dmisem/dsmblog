@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Записки ДСМ</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/dsm.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2015-07-10T00:00:00+03:00</updated><entry><title>Импорт конфигурационных файлов python</title><link href="http://localhost:8000/articles/ru/python-import-config.html" rel="alternate"></link><updated>2015-07-09T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2015-07-09:articles/ru/python-import-config.html</id><summary type="html">&lt;p&gt;Продолжаю (после перерыва) заметки для себя. Сейчас немного из области изучения python.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Записки ДСМ</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/dsm.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2015-07-10T00:00:00+03:00</updated><entry><title>Импорт конфигурационных файлов python</title><link href="http://localhost:8000/articles/ru/import-konfiguratsionnykh-failov-python.html" rel="alternate"></link><updated>2015-07-09T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2015-07-09:articles/ru/import-konfiguratsionnykh-failov-python.html</id><summary type="html">&lt;p&gt;Продолжаю (после перерыва) заметки для себя. Сейчас немного из области изучения python.&lt;/p&gt;
 &lt;p&gt;Словари в python видятся мне как очень удобный инструмент для ведения конфигурационных файлов (любого вида, любой вложенности). Например, такого типа:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Confg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;num&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
          &lt;span class="s"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;there is a text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -39,7 +39,7 @@
     &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;not found&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</summary><category term="python"></category></entry><entry><title>Переселяем pelican на github.</title><link href="http://localhost:8000/articles/ru/pelican-github.html" rel="alternate"></link><updated>2015-07-10T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-12-15:articles/ru/pelican-github.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
+</summary><category term="python"></category></entry><entry><title>Переселяем pelican на github.</title><link href="http://localhost:8000/articles/ru/pereseliaem-pelican-na-github.html" rel="alternate"></link><updated>2015-07-10T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-12-15:articles/ru/pereseliaem-pelican-na-github.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id18"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
@@ -241,7 +241,7 @@ pelican -o dsmblog content
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="blog"></category><category term="pelican"></category><category term="github"></category></entry><entry><title>Запускаем пеликана.</title><link href="http://localhost:8000/articles/ru/pelican-minstart.html" rel="alternate"></link><updated>2014-11-26T17:20:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-11-30:articles/ru/pelican-minstart.html</id><summary type="html">&lt;div class="contents topic" id="id3"&gt;
+</summary><category term="blog"></category><category term="pelican"></category><category term="github"></category></entry><entry><title>Запускаем пеликана.</title><link href="http://localhost:8000/articles/ru/zapuskaem-pelikana.html" rel="alternate"></link><updated>2014-11-26T17:20:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-11-30:articles/ru/zapuskaem-pelikana.html</id><summary type="html">&lt;div class="contents topic" id="id3"&gt;
 &lt;span id="id2"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id4" id="id16"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
@@ -545,7 +545,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="blog"></category><category term="about"></category></entry><entry><title>reStructuredText и сложные документы.</title><link href="http://localhost:8000/articles/ru/rest-complex.html" rel="alternate"></link><updated>2014-12-08T00:00:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-08-30:articles/ru/rest-complex.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
+</summary><category term="blog"></category><category term="about"></category></entry><entry><title>reStructuredText и сложные документы.</title><link href="http://localhost:8000/articles/ru/restructuredtext-i-slozhnye-dokumenty.html" rel="alternate"></link><updated>2014-12-08T00:00:00+02:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2014-08-30:articles/ru/restructuredtext-i-slozhnye-dokumenty.html</id><summary type="html">&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id19"&gt;Почему и зачем&lt;/a&gt;&lt;/li&gt;

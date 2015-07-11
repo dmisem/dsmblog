@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru"
+>
+<head>
+    <title>Запускаем пеликана. - Записки ДСМ</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="../../img/favicon.ico" rel="icon">
+
+<link rel="canonical" href="../../articles/ru/zapuskaem-pelikana.html">
+
+        <meta name="author" content="ДСМ" />
+        <meta name="keywords" content="blog,pelican,start" />
+        <meta name="description" content="Установка, минимальная настройка pelican − инструмента для создание статических блогов, использующего python, Jinja2, ReStructuredText или Markdown." />
+
+        <meta property="og:site_name" content="Записки ДСМ" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Запускаем пеликана."/>
+        <meta property="og:url" content="../../articles/ru/zapuskaem-pelikana.html"/>
+        <meta property="og:description" content="Установка, минимальная настройка pelican − инструмента для создание статических блогов, использующего python, Jinja2, ReStructuredText или Markdown."/>
+        <meta property="article:published_time" content="2014-11-30" />
+            <meta property="article:section" content="pelican" />
+            <meta property="article:tag" content="blog" />
+            <meta property="article:tag" content="pelican" />
+            <meta property="article:tag" content="start" />
+            <meta property="article:author" content="ДСМ" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="../../theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../" class="navbar-brand">
+<img src="../../img/dsm.png" width=""/>             </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="../../category/o.html">О ...</a>
+                        </li>
+                        <li class="active">
+                            <a href="../../category/pelican.html">Pelican</a>
+                        </li>
+                        <li >
+                            <a href="../../category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="../../category/rest.html">Rest</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="../../articles/ru/zapuskaem-pelikana.html"
+                       rel="bookmark"
+                       title="Permalink to Запускаем пеликана.">
+                        Запускаем пеликана.
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-11-30T17:20:00+02:00"> Вс. 30 Ноябрь 2014</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="../../tag/blog.html">blog</a>
+        /
+	<a href="../../tag/pelican.html">pelican</a>
+        /
+	<a href="../../tag/start.html">start</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <div class="contents topic" id="id3">
+<span id="id2"></span><p class="topic-title first">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id4" id="id16">Предисловие</a></li>
+<li><a class="reference internal" href="#id5" id="id17">Установка</a></li>
+<li><a class="reference internal" href="#id6" id="id18">Первый блог</a></li>
+<li><a class="reference internal" href="#id12" id="id19">Статьи-продолжения</a></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id16">Предисловие</a></h2>
+<p>В статье &quot;<a class="reference external" href="dsmblog-todo.html">Задачи и цели проекта</a>&quot; были изложены мотивы, побудившие заняться пеликаном, определены задачи и цели, намечены основные шаги.</p>
+<p>Что такое пеликан, его возможности, и довольно подробная документация находится на официальном сайте документации <a class="reference external" href="http://docs.getpelican.com">pelican</a>.</p>
+<p>Пока переводить её не планирую.</p>
+<p>Поэтому в этой статье рассмотрим первый шаг − старт пеликана. И особенности, которые возникли в моём случает.</p>
+<p><a class="reference internal" href="#id2">Содержание</a></p>
+</div>
+<div class="section" id="id5">
+<h2><a class="toc-backref" href="#id17">Установка</a></h2>
+<p>Установка довольно простая. Через pip.</p>
+<p>Поэтому, сначала создаём виртуальное окружение (я использую <a class="reference external" href="http://virtualenvwrapper.readthedocs.org">virtualenvwrapper</a>):</p>
+<div class="highlight"><pre>mkvirtualenv -a blog_project_path pelican
+</pre></div>
+<p>Устанавливаем pelican:</p>
+<div class="highlight"><pre>pip install pelican
+</pre></div>
+<p>или последнюю версию с <a class="reference external" href="https://github.com/getpelican/pelican">github</a>:</p>
+<div class="highlight"><pre>pip install -e <span class="s2">&quot;git+https://github.com/getpelican/pelican.git#egg=pelican&quot;</span>
+</pre></div>
+<p>Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил <a class="reference external" href="https://github.com/Rykka/riv.vim">riv</a> и работать с текстом в <a class="reference external" href="http://www.vim.org">vim</a> стало совсем удобно. К тому же, ReStructuredText используется <a class="reference external" href="http://sphinx-doc.org">sphinx</a> для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.</p>
+<p>Так как я sphinx пока не использую достаточно docutils (его устанавливать не нужно, он идет в зависимостях пеликана).</p>
+<p>Для выбравших Markdown:</p>
+<div class="highlight"><pre>pip install markdown
+</pre></div>
+<p>Для начала работы все готово!</p>
+<p><a class="reference internal" href="#id2">Содержание</a></p>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id18">Первый блог</a></h2>
+<div class="contents local topic" id="id7">
+<p class="topic-title first">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id8" id="id20">Создаем каркас проекта</a></li>
+<li><a class="reference internal" href="#id9" id="id21">Создаем первую статью</a></li>
+<li><a class="reference internal" href="#id10" id="id22">Устанавливает тему</a></li>
+<li><a class="reference internal" href="#id11" id="id23">Конфигурируем</a></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id7">Создаем каркас проекта</a></h3>
+<p>Каркас создается простой командой:</p>
+<div class="highlight"><pre>pelican-quickstart
+</pre></div>
+<p>Один важный момент. Если виртуальное окружение привязано к директории проекта (в папке окружения лежит файл .project, в котором указан соответствующая директория), то пеликан создаст каркас именно в этой директории независим от того, какая директория является текущей. Если возникает потребность создать второй блог, то нужно либо создавать ещё одно окружение, либо отвязывать окружение от папки проекта, либо согласовывать папки (или переименовать папку со старым блогом, или изменить папку проекта окружения).</p>
+<p>Теперь нужно ответить на вопросы (в принципе настройки потом можно поменять)</p>
+<div class="highlight"><pre>Welcome to pelican-quickstart v3.4.0.
+
+This script will <span class="nb">help </span>you create a new Pelican-based website.
+
+Please answer the following questions so this script can generate the files
+needed by Pelican.
+
+Using project associated with current virtual environment.Will save to:
+/home/***********
+
+&gt; What will be the title of this web site? dsmblog
+&gt; Who will be the author of this web site? ДСМ
+&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> ru
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   <span class="o">(</span>Y/n<span class="o">)</span>
+&gt; What is your URL prefix? <span class="o">(</span>see above example<span class="p">;</span> no trailing slash<span class="o">)</span> http://localhost:8000
+&gt; Do you want to <span class="nb">enable </span>article pagination? <span class="o">(</span>Y/n<span class="o">)</span>
+&gt; How many articles per page <span class="k">do</span> you want? <span class="o">[</span>10<span class="o">]</span>
+&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span>
+&gt; Do you want an auto-reload <span class="p">&amp;</span> simpleHTTP script to assist with theme and site development? <span class="o">(</span>Y/n<span class="o">)</span>
+&gt; Do you want to upload your website
+&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span>
+&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span>
+&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span>
+&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span>
+&gt; Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span>
+Done. Your new project is available at /home/*********
+</pre></div>
+<p>Пара замечаний:</p>
+<ul class="simple">
+<li>Выбор языка по умолчанию. У меня выбор между английским, русским и украинским.
+Английский я, к сожалению, знаю не на столько, чтобы на нем писать статьи.
+Если выбирать между русским и украинским, то тут определяющими факторами есть
+то, что русскоговорящее сообщество значительно больше,
+и то, что планирую попытаться сделать авто-перевод статей и предполагаю, что с русского будет качественней
+(хотя по этому поводу собираюсь изучить вопрос попозже).</li>
+<li>URL prefix лучше указывать даже если пока сайт будет работать на localhost.
+Иначе будет выдаваться предупреждение (warning)</li>
+<li>Автоматизацию генерирования и публикации взял по умолчанию (автообновление сайта при внесении удобно).
+Автообновление сайта при внесении изменений удобно,
+а публикацию в вебе рассмотрю позже.</li>
+<li>Остальные параметры можно установить по умолчанию (или поменять на своё усмотрение).
+В любом случае, их легко можно поменять позже.</li>
+</ul>
+<p>В результате получим такую структуру:</p>
+<div class="highlight"><pre>dsmblog/
+├── content/
+│   └── <span class="o">(</span>pages<span class="o">)</span>
+├── output/
+├── Makefile
+├── develop_server.sh
+├── fabfile.py
+├── pelicanconf.py       <span class="c"># Main settings file</span>
+└── publishconf.py       <span class="c"># Settings to use when ready to publish</span>
+</pre></div>
+<p>Теперь можно сгенерировать блог:</p>
+<div class="highlight"><pre>pelican content
+</pre></div>
+<p>Переходим в папку output/ и запускаем сервер (для python3):</p>
+<div class="highlight"><pre>python -m http.server
+</pre></div>
+<p>или (для python2):</p>
+<div class="highlight"><pre>python -m SimpleHTTPServer
+</pre></div>
+<p>или (пеликан сам определит что и как запускать):</p>
+<div class="highlight"><pre>python -m pelican.server
+</pre></div>
+<p>Теперь в броузере по адресу <a class="reference external" href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> можем посмотреть свой пустой блог.</p>
+<p>В дальнейшем удобнее использовать скрипт</p>
+<div class="highlight"><pre>develop_server.sh start
+</pre></div>
+<p>В этом случае все изменения в наполнении и установка блога будут вноситься автоматически. Иногда, правда, если где-то сделана ошибка и на сайте (блоге) изменеия не отображаются, можно остановить сервер <code class="bash">develop_server.sh stop</code>, пересобрать блог <code class="bash">pelican content</code> (обращая внимание на текущую папку) и заново запустить сервер.</p>
+<p><a class="reference internal" href="#id6">Первый блог</a></p>
+</div>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id7">Создаем первую статью</a></h3>
+<p>Пример можно взять с сайта документации <a class="reference external" href="http://docs.getpelican.com">pelican</a>, там же достаточно подробная инофрмация о по поводу наполнения статей. В том числе, ссылки на статические ресурсы вроде изображений, файлов pdf и т.п.</p>
+<p>Создаем файл с расширением .rst, наппример, my-super-post.</p>
+<p>Вносим метаданные и какой-нибудь текст</p>
+<div class="highlight"><pre><span class="gh">My super title</span>
+<span class="gh">##############</span>
+
+<span class="nc">:date:</span> <span class="nf">2010-10-03 10:20</span>
+<span class="nc">:modified:</span> <span class="nf">2010-10-04 18:40</span>
+<span class="nc">:tags:</span> <span class="nf">thats, awesome</span>
+<span class="nc">:category:</span> <span class="nf">yeah</span>
+<span class="nc">:slug:</span> <span class="nf">my-super-post</span>
+<span class="nc">:authors:</span> <span class="nf">Alexis Metaireau, Conan Doyle</span>
+<span class="nc">:summary:</span> <span class="nf">Short version for index and feeds</span>
+
+Какой-нибудь текст для моей первой супер-статьи.
+</pre></div>
+<p>Если запущен <code class="bash">develop_server.sh</code>, то просто обновляем страницу, если какой другой, то сначала перегенерируем сайт.</p>
+<p>Потом эту супер-страницу можно будет перезаписать, удалить или спрятать (<code class="rest"><span class="nc">:status:</span> <span class="nf">hiiden</span></code>)</p>
+<p><a class="reference internal" href="#id6">Первый блог</a></p>
+</div>
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id7">Устанавливает тему</a></h3>
+<p>Для работы с темами в пеликане есть инструмент <code class="bash">pelican-themes</code>, с помощью которого можно как установить готвые темы и использовать их потом только по названию. Или же можно использовать абсолютные или относительные (относительно папки проекта, например, <code class="bash">themes/pelican-bootstrap3</code>) пути к темам, которые содержат необходимые шаблоны.</p>
+<p>Можно шаблон использовать разово, собрав сайт с параметром <code class="bash">-t</code>:</p>
+<div class="highlight"><pre>pelican -t theme_or_path_to_theme content
+</pre></div>
+<p>или, если тема будет использоваться постоянно, добавить параметр <code class="bash">THEME</code> в файле настроек <code class="bash">pelicanconf.py</code>. Например,</p>
+<div class="highlight"><pre><span class="n">THEME</span> <span class="o">=</span> <span class="s">&quot;themes/pelican-bootstrap3&quot;</span>
+</pre></div>
+<p>При этом нужно, чтобы был установлен параметр</p>
+<div class="highlight"><pre><span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+<p>Довольно большой перечень шаблонов можно найти на <a class="reference external" href="https://github.com/getpelican/pelican-themes">гитхабе</a>.</p>
+<p>Для себя хотел адаптивный шаблон, поэтому выбрал <a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3">pelican-bootstrap3</a></p>
+<p>Опять же, возможные вариаты установки хорошо описаны а сайте. Как вариант скопировать в подпапку проекта <code class="bash">themes</code></p>
+<div class="highlight"><pre><span class="nb">cd </span>themes
+https://github.com/DandyDev/pelican-bootstrap3.git
+</pre></div>
+<p>и прописать как узано выше путь к файлу. В этом случае тема будет только для этого блога.</p>
+<p>Другой вариант установить тему в виртуальное окружение pelican (так я его назвал в начале статьи), потом установить через <code class="bash">pelican-themes</code> и подключать только по названию. В этом случае, легко можно создавать несколько блогов в одном окружении с этой темой.</p>
+<p><a class="reference internal" href="#id6">Первый блог</a></p>
+</div>
+<div class="section" id="id11">
+<h3><a class="toc-backref" href="#id7">Конфигурируем</a></h3>
+<p>Конфигурация блога задается с помощью параметров (переменных) в файле <tt class="docutils literal">pelicanconf.py</tt>. Полный перечень переменных определяется темой.</p>
+<p>Сущестувует рекомендация разделять файл конфигурации, во-первых, для обеспечения конфиденциальности (персональные данные хранить в отдельном файле и не синхронизировать их с хостингом (включить в <tt class="docutils literal">.gitignore</tt>)), во-вторых, при большом объему логически разделять.</p>
+<p>Пока для себя необходимости такой не вижу. Поэтому глубже рассмотрю этот вопрос в другой раз.</p>
+<p>В целом, переменные, которые идут по умолчанию впполне понятны сами по себе. Часть из них устанавливается во время сздания каркаса, часть уже правили когда тему устанавливали.</p>
+<p>Поэтому, суть конфигурирования (на начальном этапе) посмотреть параметры и установить свои данные. Добавить (при желании), свои контакты с соц. сетях и т.п.</p>
+<p><strong>На этом пока все.</strong></p>
+<p><a class="reference internal" href="#id6">Первый блог</a></p>
+<p><a class="reference internal" href="#id2">Содержание</a></p>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><a class="toc-backref" href="#id19">Статьи-продолжения</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="pelican-github.html">Переселяем пеликана на github</a></li>
+</ul>
+<!-- Links: -->
+</div>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://ua.linkedin.com/pub/dmitry-semenov/5/994/a6a"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/dmisem"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://bitbucket.org/dmisem"><i class="fa fa-bitbucket-square fa-lg"></i> bitbucket</a></li>
+                <li class="list-group-item"><a href="mailto:dmitry.5674@gmail.com"><i class="fa fa-envelope-square fa-lg"></i> e-mail</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="list-group-item"><a href="../../tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                            <li class="list-group-item tag-1">
+                                <a href="../../tag/blog.html">
+                                    blog
+                                </a>
+ </li>                             <li class="list-group-item tag-2">
+                                <a href="../../tag/pelican.html">
+                                    pelican
+                                </a>
+ </li>                             <li class="list-group-item tag-4">
+                                <a href="../../tag/python.html">
+                                    python
+                                </a>
+                         - <a href="../../tag/libreoffice.html"> LibreOffice </a>
+                         - <a href="../../tag/restructuredtext.html"> reStructuredText </a>
+                         - <a href="../../tag/docutils.html"> docutils </a>
+                         - <a href="../../tag/github.html"> github </a>
+                         - <a href="../../tag/start.html"> start </a>
+                         - <a href="../../tag/about.html"> about </a>
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://jinja.pocoo.org/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://docutils.sourceforge.net/rst.html" target="_blank">
+                ReStructuredText
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 ДСМ
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="../../theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../theme/js/respond.min.js"></script>
+
+
+</body>
+</html>

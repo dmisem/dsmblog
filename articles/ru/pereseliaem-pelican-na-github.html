@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ru"
+>
+<head>
+    <title>Переселяем pelican на github. - Записки ДСМ</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="../../img/favicon.ico" rel="icon">
+
+<link rel="canonical" href="../../articles/ru/pereseliaem-pelican-na-github.html">
+
+        <meta name="author" content="ДСМ" />
+        <meta name="keywords" content="blog,pelican,github" />
+        <meta name="description" content="Рассматривается работа в github на примере статического блога dsmblog, описанного в предыдущих статьях." />
+
+        <meta property="og:site_name" content="Записки ДСМ" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Переселяем pelican на github."/>
+        <meta property="og:url" content="../../articles/ru/pereseliaem-pelican-na-github.html"/>
+        <meta property="og:description" content="Рассматривается работа в github на примере статического блога dsmblog, описанного в предыдущих статьях."/>
+        <meta property="article:published_time" content="2014-12-15" />
+            <meta property="article:section" content="pelican" />
+            <meta property="article:tag" content="blog" />
+            <meta property="article:tag" content="pelican" />
+            <meta property="article:tag" content="github" />
+            <meta property="article:author" content="ДСМ" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="../../theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../" class="navbar-brand">
+<img src="../../img/dsm.png" width=""/>             </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="../../category/o.html">О ...</a>
+                        </li>
+                        <li class="active">
+                            <a href="../../category/pelican.html">Pelican</a>
+                        </li>
+                        <li >
+                            <a href="../../category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="../../category/rest.html">Rest</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="../../articles/ru/pereseliaem-pelican-na-github.html"
+                       rel="bookmark"
+                       title="Permalink to Переселяем pelican на github.">
+                        Переселяем pelican на github.
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-12-15T00:00:00+02:00"> Пн. 15 Декабрь 2014</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="../../tag/blog.html">blog</a>
+        /
+	<a href="../../tag/pelican.html">pelican</a>
+        /
+	<a href="../../tag/github.html">github</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <div class="contents topic" id="id2">
+<span id="id1"></span><p class="topic-title first">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id3" id="id18">Предисловие</a></li>
+<li><a class="reference internal" href="#dsmblog-github" id="id19">Перенос dsmblog на github</a></li>
+<li><a class="reference internal" href="#id8" id="id20">github как веб-хостер</a></li>
+<li><a class="reference internal" href="#id11" id="id21">Автоматизация и синхронизация</a></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id18">Предисловие</a></h2>
+<p>В предыдущих статьях, посвящённых генератору статических сайтов pelican были описаны основные <a class="reference external" href="dsmblog-todo.html">задачи и цели</a>, которые хотел решить работая с пеликаном, о описаны <a class="reference external" href="pelican-minstart.html">начальные действия</a> необходимые для того чтобы создать свой блог, поместить в нём пару статей и запустить на локальном сервере.</p>
+<p>Следующим шагом, по плану, необходимо разместить проект на каком-либо хостинге для проектов, а результат на веб‑хостинге.</p>
+<div class="section" id="id4">
+<h3>Что нужно сделать</h3>
+<p>Итак, ориентировочный перечень задач:</p>
+<ul class="simple">
+<li>Создать новый проект на github.</li>
+<li>Перенести код проекта dsmblog в созданный проект.</li>
+<li>Настроить синхронизацию.</li>
+<li>Разместить результат на github.io.</li>
+<li>Настроить синхронизацию для результирующего блога с хостингом.</li>
+</ul>
+</div>
+<div class="section" id="git">
+<h3>Почему git</h3>
+<p>Выбор, в общем-то, между <a class="reference external" href="https://github.com">github</a> и <a class="reference external" href="https://bitbucket.org">bitbucket</a>. Оба хостинга имеют необходимый бесплатный функционал (мне пока нужно git и веб‑хостинг, возможность работать через SSL есть и там, и там). Субъективные оценки интерфейса старался не учитывать. Для себя отметил пока такие особенности ресурсов:</p>
+<p>github</p>
+<ul class="simple">
+<li>имеет большое сообщество;</li>
+<li>не ограничивает количество человек в команде;</li>
+<li>не даёт права создавать бесплатные закрытые проекты;</li>
+<li>много маститых разработчиков размещают свои официальные репозитории на этом сервисе.</li>
+</ul>
+<p>bitbucket</p>
+<ul class="simple">
+<li>предоставляет возможность создавать до пяти бесплатных приватных проектов (основное преимущество);</li>
+<li>ограничивает количество разработчиков для бесплатных проектов;</li>
+<li>сообщество довольно большое, хоть и поменьше чем у github;</li>
+<li>По маститости, вроде как поскромнее чем github.</li>
+</ul>
+<p>В общем, если нужен приватный проект − однозначно bitbucket, в противном случае − скорее github.</p>
+<p>Так как прятать dsmmblog я не планирую, решил разместить на github.</p>
+<p><a class="reference internal" href="#id1">Содержание</a></p>
+</div>
+</div>
+<div class="section" id="dsmblog-github">
+<h2><a class="toc-backref" href="#id19">Перенос dsmblog на github</a></h2>
+<div class="section" id="id5">
+<h3>Регистрация и установка git.</h3>
+<p>Если ещё раньше этого сделано не было (регистрация на github и | или установка git) − самое время.</p>
+<p><a class="reference external" href="https://help.github.com/articles/signing-up-for-a-new-github-account">Регистрация на github</a> предельно проста, хорошо описана (хоть и на английском, но понятно для того чтобы выбрать бесплатный вариант для обычного пользователя).</p>
+<p><a class="reference external" href="https://help.github.com/articles/set-up-git/#platform-linux">Установка git</a> довольно проста (по крайней мере, в Linux). По поводу <code class="bash">git config</code> −изменения записываются в файл <code class="bash">~/.gitconfig</code> и могут легко быть исправлены и (или) дополнены. Более того, можно сразу создать (или скопировать из архива) этот файл.</p>
+<p>Мой файл конфигурации:</p>
+<div class="highlight"><pre><span class="o">[</span>user<span class="o">]</span>
+    <span class="nv">name</span> <span class="o">=</span> UserName  <span class="c"># user name</span>
+    <span class="nv">email</span> <span class="o">=</span> User@e.mail  <span class="c"># email address that will be associated with your Git commits</span>
+<span class="o">[</span>core<span class="o">]</span>
+    <span class="nv">autocrlf</span> <span class="o">=</span> input  <span class="c"># settings for CRLF conversion</span>
+    <span class="nv">safecrlf</span> <span class="o">=</span> <span class="nb">true</span>  <span class="c">#  settings for CRLF conversion</span>
+    <span class="nv">excludesfile</span> <span class="o">=</span> ~/.gitexcludes  <span class="c"># like .gitignore but for all projects</span>
+<span class="o">[</span>credential<span class="o">]</span>
+    <span class="nv">helper</span> <span class="o">=</span> cache --timeout<span class="o">=</span><span class="m">3600</span>  <span class="c"># allow to input username and password once per timeout</span>
+</pre></div>
+<p>Есть вопрос выбора между SSL и HTTPS. Первый вариант (SSL), вроде даёт возможность не вводить каждый раз пароль и под Linux реализуется элементарно. Второй (HTTPS) рекомендован githib-ом + в комбинации с параметром <code class="bash"><span class="nv">helper</span> <span class="o">=</span> cache --timeout<span class="o">=</span>3600</code> позволяет вводить пароль только один раз за сеанс работы. В итоге я остановился на HTTPS (пошёл по пути наименьшего сопротивления).</p>
+<p><a class="reference internal" href="#id1">Содержание</a></p>
+</div>
+<div class="section" id="github">
+<h3>Хостим код на github</h3>
+<p>Вариант очевидный. Есть локальный dsmblog и есть одноимённый проект на github. Нужно синхронизировать. Можно, но сложно. Хотя, если на github совсем пустой проект, то не так уж и сложно. Но, как сказал классик, мы пойдём другим путём.</p>
+<p>Сохраняем свой проект под другим именем (например, dsmblog_local):</p>
+<div class="highlight"><pre>mv dsmblog dsmblog
+</pre></div>
+<p>Клонируем проект с github и инициализируем:</p>
+<div class="highlight"><pre>git clone https://github.com/dmisem/dsmblog.git <span class="o">&amp;&amp;</span> <span class="nb">cd </span>dsmblog <span class="o">&amp;&amp;</span> git init
+</pre></div>
+<p>Копируем проект:</p>
+<div class="highlight"><pre>cp -rf ../dsmblog_local/* ./
+</pre></div>
+<p>Почти всё. Осталось настроить параметры синхронизации (назовём это так). Об этом в следующем подразделе.</p>
+</div>
+<div class="section" id="id6">
+<h3>Локальные параметры</h3>
+<p>Локальные параметры:
+* некоторые параметры из <code class="bash">pelicanconf.py</code>, которые не нужно выкладывать в общедоступную среду;
+* настройки <code class="bash">.gitignore</code>, указывающие какие файлы не будут учитываться git и, соответственно, не будут залиты на github.</p>
+<p>Фрагмент <code class="bash">pelicanconf.py</code>, которые &quot;подтягивают&quot; данные из файла <code class="bash">local_settings.py</code>:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">local_settings</span> <span class="kn">as</span> <span class="nn">ls</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">AUTHOR</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">SITENAME</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">SITEURL</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">PATH</span>
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">TIMEZONE</span>
+<span class="n">LOCALE</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">LOCALE</span>
+<span class="n">DEFAULT_LANG</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">DEFAULT_LANG</span>
+</pre></div>
+<p>Что должно быть в <code class="bash">local_settings.py</code>, по моему, очевидно.</p>
+<p>При работе с python3.4 возник нехороший нюанс - <code class="py python"><span class="kn">import</span></code> не подтягивает фалы, которые расположены в той же папке, что и <code class="bash">pelicanconf.py</code>, можно решить явным добавлением пути проекта в <code class="py python"><span class="n">sys</span><span class="o">.</span><span class="n">path</span></code>:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">SITE_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SITE_ROOT</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">local_settings</span> <span class="kn">as</span> <span class="nn">ls</span>
+</pre></div>
+<p>подробно этот вопрос разбирается на <a class="reference external" href="http://stackoverflow.com/questions/16981921/relative-imports-in-python-3">stackoverflow</a></p>
+<p>Мой <code class="bash">.gitignore</code>:</p>
+<div class="highlight"><pre><span class="c"># Generated by vim</span>
+.ropeproject/
+__pycache__/
+
+<span class="c"># Generated by pelican</span>
+<span class="c"># Folder output changed to dsmblog</span>
+<span class="c">#   for pushing into gh-pages branch.</span>
+cache/
+output/
+/dsmblog/
+
+<span class="c"># temporary files</span>
+*.pid
+<span class="nb">test</span>*
+tmp*
+*.pyc
+
+<span class="c"># local settings</span>
+local_settings.*
+Makefile
+fabfile.py
+</pre></div>
+<p>Здесь считаю нужным отметить папки <cite>output/</cite> и <cite>/dsmblog/</cite>. На github хранится только код без результирующего сайта, Сам итоговый сайт будет размещён отдельно (подробнее в следующем разделе. Для этого потом папку <cite>output/</cite> нужно будет переименовать в <cite>/dsmblog/</cite>.</p>
+</div>
+<div class="section" id="id7">
+<h3>Заливаем код</h3>
+<p>Добавляем свои файлы в индекс git:</p>
+<div class="highlight"><pre>git add .
+</pre></div>
+<p>Коммитим изменения (параметр <cite>-m</cite> если коммитятся только изменения или добавления, для коммита также и удалений нужно использовать  <cite>-a</cite>) и &quot;пушим&quot; (отправляем) изменения на github:</p>
+<div class="highlight"><pre>git commit -m <span class="s2">&quot;first commit all project to github.&quot;</span>
+git push
+</pre></div>
+<p>Проходим авторизацию (если не используем SSL), заходим на сайт <a class="reference external" href="https://github.com">https://github.com</a> и авторизируемся (или обновляем страницу если уже там) и наблюдаем изменения.</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id20">github как веб-хостер</a></h2>
+<p>Веб-хостинг для проектов github располагается на сайте <a class="reference external" href="https://pages.github.com">https://pages.github.com</a> сайты называются Pages, подробная справка по адресу <a class="reference external" href="https://help.github.com/categories/github-pages-basics/">https://help.github.com/categories/github-pages-basics/</a>.</p>
+<p>Поддерживаются два типа страниц: страница пользователя (вариант с организацией я не рассматриваю) и страница проекта. Страницы (любого типа) можно создать (и потом редактировать) с помощью неплохого, простого генератора, который имеет небольшое количество довольно симпатичных шаблонов (правда, не отзывчивых).</p>
+<p>В учебно-практических целях остановился на таком варианте:</p>
+<ul class="simple">
+<li>создаю персональный сайт, где размещаю краткую информацию о себе и ссылки на свои проекты;</li>
+<li>создаю сайт проекта dsmblog куда помещаю созданный статический блог.</li>
+</ul>
+<div class="section" id="id9">
+<h3>Персональный сайт</h3>
+<p>Персональный сайт решил сделать с помощью встроенного генератора.</p>
+<p>Для этого строго по <a class="reference external" href="https://help.github.com/articles/creating-pages-with-the-automatic-generator">инструкции по генерированию сайта</a> создаю проект dmisem.github.io, и для нового проекта создаю сайт с помощью генератора (потом изменить с помощью генератора можно зайдя в меню Settings).</p>
+<p>На первом этапе корректируем на языке Markdown (сайт содержит довольно подробную инструкцию по markdown) наполнение, созданное генератором. На втором выбираем шаблон. Через несколько минут сайт будет доступен по адресу <a class="reference external" href="http://dmisem.github.io/">http://dmisem.github.io/</a></p>
+</div>
+<div class="section" id="id10">
+<h3>Статический блог (страница проекта).</h3>
+<p>Суть создания страницы проекта − создание независимой ветки gh-pages и размещение там статического сайта.</p>
+<p>Самый простой способ - создать страницу с помощью генератора (через команду меню Settings). Заодно можно посмотреть что содержит стандартная страница.</p>
+<p>Далее клонируем ветку внутрь папки проекта (таким образом внутри папки dsmblog будет создана ещё одна папка dsmblog) и инициализируем её:</p>
+<div class="highlight"><pre>git clone -b gh-pages https://github.com/dmisem/dsmblog.git <span class="o">&amp;&amp;</span> <span class="nb">cd </span>dsmblog <span class="o">&amp;&amp;</span> git init
+</pre></div>
+<p>и вычищаем старое содержимое:</p>
+<div class="highlight"><pre>git rm -rf . <span class="o">&amp;&amp;</span> git commit -a <span class="s2">&quot;clear old content&quot;</span> <span class="o">&amp;&amp;</span> git push
+</pre></div>
+<p>Теперь возвращаемся в основной каталог и генерируем сайт во вновь созданную папку:</p>
+<div class="highlight"><pre>pelican -o dsmblog content
+</pre></div>
+<p>Теперь записываем изменения на github:</p>
+<div class="highlight"><pre><span class="nb">cd </span>dsmblog <span class="o">&amp;&amp;</span> git add . <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&quot;generated on timestamp&quot;</span> <span class="o">&amp;&amp;</span> git push
+</pre></div>
+<p>Всё! Можно заходит на сайт <a class="reference external" href="http://dmisem.github.io/dsmblog/">http://dmisem.github.io/dsmblog/</a></p>
+<p><a class="reference internal" href="#id1">Содержание</a></p>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><a class="toc-backref" href="#id21">Автоматизация и синхронизация</a></h2>
+<p>Автоматизировать внесение изменений кода на github смысла не вижу.</p>
+<p>А вот работу с созданным сайтом вижу по такой схеме:</p>
+<ul class="simple">
+<li>сначала создаётся сайт в папке output;</li>
+<li>проверяется его работа на локальном сервере;</li>
+<li>если все в порядке, создаётся окончательная версия в папке dsmblog и отправляется на сервер.</li>
+</ul>
+<p>Автоматизировать стоит только последний пункт. Для этого создан скрипт <cite>git.dsmblog.sh</cite> с таким содержим:</p>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nv">DIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="s2">&quot;/dsmblog&quot;</span>
+<span class="nv">CDT</span><span class="o">=</span><span class="sb">`</span>date +%Y-%m-%d<span class="se">\ </span>%H:%M<span class="sb">`</span>  <span class="c"># Current datetime</span>
+<span class="nv">GT</span><span class="o">=</span><span class="s2">&quot;git --git-dir=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/.git --work-tree=</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2"> &quot;</span>
+
+pelican -o dsmblog content
+<span class="nb">echo </span>Generated
+
+<span class="si">${</span><span class="nv">GT</span><span class="si">}</span>add . <span class="o">&amp;&amp;</span> <span class="si">${</span><span class="nv">GT</span><span class="si">}</span>commit -a -m <span class="s2">&quot;Autogenerate: </span><span class="si">${</span><span class="nv">CDT</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> <span class="si">${</span><span class="nv">GT</span><span class="si">}</span>push
+<span class="nb">echo </span>Pushed!
+</pre></div>
+<p><a class="reference internal" href="#id1">Содержание</a></p>
+</div>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://ua.linkedin.com/pub/dmitry-semenov/5/994/a6a"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/dmisem"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://bitbucket.org/dmisem"><i class="fa fa-bitbucket-square fa-lg"></i> bitbucket</a></li>
+                <li class="list-group-item"><a href="mailto:dmitry.5674@gmail.com"><i class="fa fa-envelope-square fa-lg"></i> e-mail</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="list-group-item"><a href="../../tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                            <li class="list-group-item tag-1">
+                                <a href="../../tag/blog.html">
+                                    blog
+                                </a>
+ </li>                             <li class="list-group-item tag-2">
+                                <a href="../../tag/pelican.html">
+                                    pelican
+                                </a>
+ </li>                             <li class="list-group-item tag-4">
+                                <a href="../../tag/python.html">
+                                    python
+                                </a>
+                         - <a href="../../tag/libreoffice.html"> LibreOffice </a>
+                         - <a href="../../tag/restructuredtext.html"> reStructuredText </a>
+                         - <a href="../../tag/docutils.html"> docutils </a>
+                         - <a href="../../tag/github.html"> github </a>
+                         - <a href="../../tag/start.html"> start </a>
+                         - <a href="../../tag/about.html"> about </a>
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://jinja.pocoo.org/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://docutils.sourceforge.net/rst.html" target="_blank">
+                ReStructuredText
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 ДСМ
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="../../theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../theme/js/respond.min.js"></script>
+
+
+</body>
+</html>

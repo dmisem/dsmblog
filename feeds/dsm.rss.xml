@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Записки ДСМ</title><link>http://localhost:8000/</link><description></description><atom:link href="http://localhost:8000/feeds/dsm.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 10 Jul 2015 00:00:00 +0300</lastBuildDate><item><title>Импорт конфигурационных файлов python</title><link>http://localhost:8000/articles/ru/python-import-config.html</link><description>&lt;p&gt;Продолжаю (после перерыва) заметки для себя. Сейчас немного из области изучения python.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Записки ДСМ</title><link>http://localhost:8000/</link><description></description><atom:link href="http://localhost:8000/feeds/dsm.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 10 Jul 2015 00:00:00 +0300</lastBuildDate><item><title>Импорт конфигурационных файлов python</title><link>http://localhost:8000/articles/ru/import-konfiguratsionnykh-failov-python.html</link><description>&lt;p&gt;Продолжаю (после перерыва) заметки для себя. Сейчас немного из области изучения python.&lt;/p&gt;
 &lt;p&gt;Словари в python видятся мне как очень удобный инструмент для ведения конфигурационных файлов (любого вида, любой вложенности). Например, такого типа:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Confg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;num&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
          &lt;span class="s"&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;there is a text&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -39,7 +39,7 @@
     &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;not found&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Thu, 09 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2015-07-09:articles/ru/python-import-config.html</guid><category>python</category></item><item><title>Переселяем pelican на github.</title><link>http://localhost:8000/articles/ru/pelican-github.html</link><description>&lt;div class="contents topic" id="id2"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Thu, 09 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2015-07-09:articles/ru/import-konfiguratsionnykh-failov-python.html</guid><category>python</category></item><item><title>Переселяем pelican на github.</title><link>http://localhost:8000/articles/ru/pereseliaem-pelican-na-github.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id18"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
@@ -241,7 +241,7 @@ pelican -o dsmblog content
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Fri, 10 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2014-12-15:articles/ru/pelican-github.html</guid><category>blog</category><category>pelican</category><category>github</category></item><item><title>Запускаем пеликана.</title><link>http://localhost:8000/articles/ru/pelican-minstart.html</link><description>&lt;div class="contents topic" id="id3"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Fri, 10 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2014-12-15:articles/ru/pereseliaem-pelican-na-github.html</guid><category>blog</category><category>pelican</category><category>github</category></item><item><title>Запускаем пеликана.</title><link>http://localhost:8000/articles/ru/zapuskaem-pelikana.html</link><description>&lt;div class="contents topic" id="id3"&gt;
 &lt;span id="id2"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id4" id="id16"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
@@ -432,7 +432,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;/ul&gt;
 &lt;!-- Links: --&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 17:20:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-30:articles/ru/pelican-minstart.html</guid><category>blog</category><category>pelican</category><category>start</category></item><item><title>Задачи и цели проекта dsmblog (Записки ДСМ)</title><link>http://localhost:8000/articles/ru/dsmblog-todo.html</link><description>&lt;div class="contents topic" id="id2"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Wed, 26 Nov 2014 17:20:00 +0200</pubDate><guid>tag:localhost:8000,2014-11-30:articles/ru/zapuskaem-pelikana.html</guid><category>blog</category><category>pelican</category><category>start</category></item><item><title>Задачи и цели проекта dsmblog (Записки ДСМ)</title><link>http://localhost:8000/articles/ru/dsmblog-todo.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id15"&gt;Предисловие&lt;/a&gt;&lt;/li&gt;
@@ -545,7 +545,7 @@ https://github.com/DandyDev/pelican-bootstrap3.git
 &lt;p&gt;&lt;a class="reference internal" href="#id1"&gt;Содержание&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Fri, 10 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</guid><category>blog</category><category>about</category></item><item><title>reStructuredText и сложные документы.</title><link>http://localhost:8000/articles/ru/rest-complex.html</link><description>&lt;div class="contents topic" id="id2"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Fri, 10 Jul 2015 00:00:00 +0300</pubDate><guid>tag:localhost:8000,2014-11-26:articles/ru/dsmblog-todo.html</guid><category>blog</category><category>about</category></item><item><title>reStructuredText и сложные документы.</title><link>http://localhost:8000/articles/ru/restructuredtext-i-slozhnye-dokumenty.html</link><description>&lt;div class="contents topic" id="id2"&gt;
 &lt;span id="id1"&gt;&lt;/span&gt;&lt;p class="topic-title first"&gt;Содержание&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#id3" id="id19"&gt;Почему и зачем&lt;/a&gt;&lt;/li&gt;
@@ -780,4 +780,4 @@ find ./S*/ -name &lt;span class="s2"&gt;&amp;quot;*.rst&amp;quot;&lt;/span&gt; &
 &lt;p&gt;Сейчас кое-что переделал (возможности оставил те же, изменил (унифицировал) реализацию и настройку).&lt;/p&gt;
 &lt;p&gt;Об этом в следующей статье на эту тему (Когда напишу вставлю ссылку).&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Mon, 08 Dec 2014 00:00:00 +0200</pubDate><guid>tag:localhost:8000,2014-08-30:articles/ru/rest-complex.html</guid><category>reStructuredText</category><category>docutils</category><category>LibreOffice</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">ДСМ</dc:creator><pubDate>Mon, 08 Dec 2014 00:00:00 +0200</pubDate><guid>tag:localhost:8000,2014-08-30:articles/ru/restructuredtext-i-slozhnye-dokumenty.html</guid><category>reStructuredText</category><category>docutils</category><category>LibreOffice</category></item></channel></rss>
