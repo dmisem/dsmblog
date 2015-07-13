@@ -1,6 +1,9 @@
 {% if DISPLAY_TAGS_ON_SIDEBAR is not defined %}
     {% set DISPLAY_TAGS_ON_SIDEBAR = True %}
 {% endif %}
+{% if TAG_LEVELS_COUNT is not defined %}
+    {% set TAG_LEVELS_COUNT = 5 %}
+{% endif %}
 
 <section class="well well-sm">
     <ul class="list-group list-group-flush">
@@ -62,13 +65,24 @@
             {% endif %}
             <li class="list-group-item"><a href="{{ SITEURL }}/{{ TAGS_URL }}"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group {% if DISPLAY_TAGS_INLINE %}list-inline tagcloud{% endif %}" id="tags">
-                {% for tag in tags %}
-                    <li class="list-group-item tag-{{ tag.1 }}">
-                        <a href="{{ SITEURL }}/{{ tag.0.url }}">
-                            {{ tag.0 }}
-                        </a>
-                    </li>
+                {% set tag_n = 0 %}
+                {% set tag_nn = 0 %}
+                {% for tag in tags if tag_nn <= TAG_LEVELS_COUNT %}
+                    {% if tag_n == tag.1 %}
+                         - <a href="{{ SITEURL }}/{{ tag.0.url }}"> {{ tag.0 }} </a>
+                    {% else %}
+                        {% set tag_nn = tag_nn + 1 %}
+                        {% if tag_nn <= TAG_LEVELS_COUNT %}
+                            {% if tag_n != 0 %} </li> {% endif %}
+                            <li class="list-group-item tag-{{ tag.1 }}">
+                                <a href="{{ SITEURL }}/{{ tag.0.url }}">
+                                    {{ tag.0 }}
+                                </a>
+                        {% endif %}
+                        {% set tag_n = tag.1 %}
+                    {% endif %}
                 {% endfor %}
+                {% if tag_n != 0 %} </li> {% endif %}
                 </ul>
             </li>
         {% endif %}

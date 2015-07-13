@@ -4,8 +4,6 @@
 :date: 2015-07-09
 :modified: 2015-07-09
 :tags: python
-:category: python
-:slug: python-import-config
 :author: ДСМ
 :summary: Рассматривается использование конфигурационных файлов написанных на python через механизм импортирования модулей.
 :lang: ru

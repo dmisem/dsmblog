@@ -4,8 +4,6 @@
 :date:  2014-11-30 17:20
 :modified: 2014-11-26 17:20
 :tags: blog, pelican, start
-:category: веб
-:slug: pelican-minstart
 :author: ДСМ
 :summary: Установка, минимальная настройка pelican − инструмента для создание статических блогов, использующего python, Jinja2, ReStructuredText или Markdown.
 :lang: ru
@@ -39,7 +37,7 @@
 
 Установка довольно простая. Через pip.
 
-Поэтому, сначала создаём виртуальное окружение (я использую `virtualenvwrapper <http://virtualenvwrapper.readthedocs.org/>`_): 
+Поэтому, сначала создаём виртуальное окружение (я использую virtualenvwrapper_): 
 
 .. code-block:: bash
 
@@ -51,14 +49,14 @@
    
    pip install pelican
 
-или последнюю версию с `github <https://github.com/getpelican/pelican>`_:
+или последнюю версию с github_:
 
 .. code-block:: bash
    
    pip install -e "git+https://github.com/getpelican/pelican.git#egg=pelican"
 
 
-Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил `riv <https://github.com/Rykka/riv.vim>`_ и работать с текстом в `vim <http://www.vim.org/>`_ стало совсем удобно. К тому же, ReStructuredText используется `sphinx <http://sphinx-doc.org/>`_ для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.
+Необходимо определиться с языком разметки для написания статей (ReStructuredText или Markdown). Markdown более популярен, так как несколько проще, но менее функционален. Я использую ReStructuredText, так нужны были его возможности (таблицы, include), потом установил riv_ и работать с текстом в vim_ стало совсем удобно. К тому же, ReStructuredText используется sphinx_ для документирования кода в python (для генерирования документации). Пока документацию не генерировал, но ближайшем будущем к этому приду. Так что для меня вопроса с выбором ReStructuredText или Markdown не стоит. Markdown возможно установлю в будущем, чтобы поработать с его синтаксисом.
 
 Так как я sphinx пока не использую достаточно docutils (его устанавливать не нужно, он идет в зависимостях пеликана).
 
@@ -114,7 +112,7 @@
    > How many articles per page do you want? [10] 
    > Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) 
    > Do you want an auto-reload & simpleHTTP script to assist with theme and site development? (Y/n) 
-   > Do you want to upload your website using FTP? (y/N) 
+   > Do you want to upload your website
    > Do you want to upload your website using SSH? (y/N) 
    > Do you want to upload your website using Dropbox? (y/N) 
    > Do you want to upload your website using S3? (y/N) 
@@ -241,9 +239,9 @@
 
    RELATIVE_URLS = True
 
-Довольно большой перечень шаблонов можно найти на `хабе <https://github.com/getpelican/pelican-themes>`_.
+Довольно большой перечень шаблонов можно найти на `гитхабе`_.
 
-Для себя хотел адаптивный шаблон, поэтому выбрал `pelican-bootstrap3 <https://github.com/DandyDev/pelican-bootstrap3>`_
+Для себя хотел адаптивный шаблон, поэтому выбрал pelican-bootstrap3_ 
 
 Опять же, возможные вариаты установки хорошо описаны а сайте. Как вариант скопировать в подпапку проекта :bash:`themes` 
 
@@ -279,5 +277,20 @@
 
 `Содержание`_
 
-.. _pelican: http://docs.getpelican.com
+
+Статьи-продолжения
+==================
+
+* `Переселяем пеликана на github <pelican-github.html>`_
+
+
+.. Links:
 .. _`Задачи и цели проекта`: dsmblog-todo.html
+.. _pelican: http://docs.getpelican.com
+.. _virtualenvwrapper: http://virtualenvwrapper.readthedocs.org
+.. _github: https://github.com/getpelican/pelican
+.. _riv: https://github.com/Rykka/riv.vim
+.. _vim: http://www.vim.org
+.. _sphinx: http://sphinx-doc.org
+.. _`гитхабе`: https://github.com/getpelican/pelican-themes
+.. _pelican-bootstrap3: https://github.com/DandyDev/pelican-bootstrap3

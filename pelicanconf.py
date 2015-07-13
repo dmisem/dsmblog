@@ -42,9 +42,27 @@ SOCIAL = (
     ('e-mail', 'mailto:dmitry.5674@gmail.com', 'envelope'),
 )
 
+STATIC_PATHS = ['images', 'img']
+
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
 THEME = "themes/pelican-bootstrap3"
+PYGMENTS_STYLE = "default"
+
+FAVICON = 'img/favicon.ico'
+SITELOGO = 'img/dsm.png'
+HIDE_SITENAME = True
+
+DISPLAY_TAGS_ON_SIDEBAR = True
+DISPLAY_TAGS_INLINE = False
+TAG_LEVELS_COUNT = 3  # My settings
+TAGS_URL = 'tags.html'
+DISPLAY_CATEGORIES_ON_SIDEBAR = False
+DISPLAY_RECENT_POSTS_ON_SIDEBAR = False
+
+PLUGIN_PATHS = [SITE_ROOT + '/plugins']
+PLUGINS = ['tag_cloud']
+USE_FOLDER_AS_CATEGORY = True

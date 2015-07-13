@@ -4,8 +4,6 @@
 :date: 2014-12-15
 :modified: 2015-07-10
 :tags: blog, pelican, github
-:category: веб
-:slug: pelican-github
 :author: ДСМ
 :summary: Рассматривается работа в github на примере статического блога dsmblog, описанного в предыдущих статьях.
 :lang: ru
@@ -28,7 +26,7 @@
 Предисловие
 ===========
 
-В предыдущих статьях, посвящённых генератору статических сайтов pelican были описаны основные `задачи и цели <|todo|>`_, которые хотел решить работая с пеликаном, о описаны `начальные действия <|minstart|>`_ необходимые для того чтобы создать свой блог, поместить в нём пару статей и запустить на локальном сервере.
+В предыдущих статьях, посвящённых генератору статических сайтов pelican были описаны основные `задачи и цели`_, которые хотел решить работая с пеликаном, о описаны `начальные действия`_ необходимые для того чтобы создать свой блог, поместить в нём пару статей и запустить на локальном сервере.
 
 Следующим шагом, по плану, необходимо разместить проект на каком-либо хостинге для проектов, а результат на веб‑хостинге.
 
@@ -46,7 +44,7 @@
 Почему git
 ----------
 
-Выбор, в общем-то, между `github <https://github.com/>`_ и `bitbucket <https://bitbucket.org/>`_. Оба хостинга имеют необходимый бесплатный функционал (мне пока нужно git и веб‑хостинг, возможность работать через SSL есть и там, и там). Субъективные оценки интерфейса старался не учитывать. Для себя отметил пока такие особенности ресурсов:
+Выбор, в общем-то, между github_ и bitbucket_. Оба хостинга имеют необходимый бесплатный функционал (мне пока нужно git и веб‑хостинг, возможность работать через SSL есть и там, и там). Субъективные оценки интерфейса старался не учитывать. Для себя отметил пока такие особенности ресурсов:
 
 github
 
@@ -76,9 +74,9 @@ bitbucket
 
 Если ещё раньше этого сделано не было (регистрация на github и | или установка git) − самое время.
 
-`Регистрация на github <https://help.github.com/articles/signing-up-for-a-new-github-account/>`_ предельно проста, хорошо описана (хоть и на английском, но понятно для того чтобы выбрать бесплатный вариант для обычного пользователя).
+`Регистрация на github`_ предельно проста, хорошо описана (хоть и на английском, но понятно для того чтобы выбрать бесплатный вариант для обычного пользователя).
 
-`Установка git <https://help.github.com/articles/set-up-git/#platform-linux>`_ довольно проста (по крайней мере, в Linux). По поводу :bash:`git config` −изменения записываются в файл :bash:`~/.gitconfig` и могут легко быть исправлены и (или) дополнены. Более того, можно сразу создать (или скопировать из архива) этот файл.
+`Установка git`_ довольно проста (по крайней мере, в Linux). По поводу :bash:`git config` −изменения записываются в файл :bash:`~/.gitconfig` и могут легко быть исправлены и (или) дополнены. Более того, можно сразу создать (или скопировать из архива) этот файл.
 
 Мой файл конфигурации:
 
@@ -87,15 +85,6 @@ bitbucket
    [user]
        name = UserName  # user name
        email = User@e.mail  # email address that will be associated with your Git commits
-   [core]
-       autocrlf = input  # settings for CRLF conversion 
-       safecrlf = true  #  settings for CRLF conversion 
-       excludesfile = ~/.gitexcludes  # like .gitignore but for all projects
-   [credential]
-       helper = cache --timeout=3600  # allow to input username and password once per timeout
-   [user]
-       name = ДСМ  # user name
-       email = dmitry.5674@gmail.com  # email address that will be associated with your Git commits
    [core]
        autocrlf = input  # settings for CRLF conversion 
        safecrlf = true  #  settings for CRLF conversion 
@@ -116,7 +105,7 @@ bitbucket
 
 .. code-block:: bash
 
-   mv dsmblog dsmblog_local
+   mv dsmblog dsmblog
 
 Клонируем проект с github и инициализируем:
 
@@ -155,7 +144,7 @@ bitbucket
    
 Что должно быть в :bash:`local_settings.py`, по моему, очевидно.
 
-При работе с python3.4 возник нехороший нюанс - :py:`import` не подтягивает фалы, которые расположены в той же папке, что и :bash:`pelicanconf.py`, решается явным добавлением пути проекта в :py:`sys.path`:
+При работе с python3.4 возник нехороший нюанс - :py:`import` не подтягивает фалы, которые расположены в той же папке, что и :bash:`pelicanconf.py`, можно решить явным добавлением пути проекта в :py:`sys.path`:
 
 .. code-block:: python
 
@@ -164,6 +153,8 @@ bitbucket
    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
    sys.path.append(SITE_ROOT)
    import local_settings as ls
+
+подробно этот вопрос разбирается на stackoverflow_
 
 Мой :bash:`.gitignore`:
 
@@ -228,11 +219,11 @@ github как веб-хостер
 
 Персональный сайт решил сделать с помощью встроенного генератора.
 
-Для этого строго по `инструкции <https://help.github.com/articles/creating-pages-with-the-automatic-generator/>`_ создаю проект dmisem.github.io, и для нового проекта создаю сайт с помощью генератора (потом изменить с помощью генератора можно зайдя в меню Settings).
+Для этого строго по `инструкции по генерированию сайта`_ создаю проект dmisem.github.io, и для нового проекта создаю сайт с помощью генератора (потом изменить с помощью генератора можно зайдя в меню Settings).
 
 На первом этапе корректируем на языке Markdown (сайт содержит довольно подробную инструкцию по markdown) наполнение, созданное генератором. На втором выбираем шаблон. Через несколько минут сайт будет доступен по адресу http://dmisem.github.io/
 
-Статический блог (страницаа проекта).
+Статический блог (страница проекта).
 -------------------------------------
 
 Суть создания страницы проекта − создание независимой ветки gh-pages и размещение там статического сайта.
@@ -296,5 +287,12 @@ github как веб-хостер
 
 `Содержание`_
 
-.. |todo| replace:: dsmblog-todo.html
-.. |minstart| replace:: pelican-minstart.html
+.. _Links:
+.. _`задачи и цели`: dsmblog-todo.html 
+.. _`начальные действия`: pelican-minstart.html
+.. _github: https://github.com
+.. _bitbucket: https://bitbucket.org
+.. _`Регистрация на github`: https://help.github.com/articles/signing-up-for-a-new-github-account
+.. _`Установка git`: https://help.github.com/articles/set-up-git/#platform-linux
+.. _`инструкции по генерированию сайта`: https://help.github.com/articles/creating-pages-with-the-automatic-generator
+.. _stackoverflow: http://stackoverflow.com/questions/16981921/relative-imports-in-python-3

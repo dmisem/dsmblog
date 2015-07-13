@@ -4,8 +4,6 @@ reStructuredText и сложные документы.
 :date:  2014-08-30
 :modified: 2014-12-08
 :tags: reStructuredText, docutils, LibreOffice
-:category: Разметка
-:slug: rest-complex
 :author: ДСМ
 :summary: Использование reStructuredText в сложных документах.
 :lang: ru
