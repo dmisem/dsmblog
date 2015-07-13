@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru"
+>
+<head>
+    <title>Демонизация на python3 - Записки ДСМ</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="../../img/favicon.ico" rel="icon">
+
+<link rel="canonical" href="../../articles/ru/demonizatsiia-na-python3.html">
+
+        <meta name="author" content="ДСМ" />
+        <meta name="keywords" content="python,декораторы" />
+        <meta name="description" content="Создание утилиты для демонизации программ написанных на python разными способами." />
+
+        <meta property="og:site_name" content="Записки ДСМ" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Демонизация на python3"/>
+        <meta property="og:url" content="../../articles/ru/demonizatsiia-na-python3.html"/>
+        <meta property="og:description" content="Создание утилиты для демонизации программ написанных на python разными способами."/>
+        <meta property="article:published_time" content="2015-07-13" />
+            <meta property="article:section" content="Python" />
+            <meta property="article:tag" content="python" />
+            <meta property="article:tag" content="декораторы" />
+            <meta property="article:author" content="ДСМ" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="../../theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="../../theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="../../theme/css/pygments/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../theme/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../../" class="navbar-brand">
+<img src="../../img/dsm.png" width=""/>             </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="../../category/about.html">About</a>
+                        </li>
+                        <li >
+                            <a href="../../category/pelican.html">Pelican</a>
+                        </li>
+                        <li class="active">
+                            <a href="../../category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="../../category/rest.html">Rest</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../../archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <script type="text/javascript" src="../../theme/details-shim/details-shim.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../theme/details-shim/details-shim.min.css">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="../../articles/ru/demonizatsiia-na-python3.html"
+                       rel="bookmark"
+                       title="Permalink to Демонизация на python3">
+                        Демонизация на python3
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-07-13T07:49:51+03:00"> Пн. 13 Июль 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="../../tag/python.html">python</a>
+        /
+	<a href="../../tag/dekoratory.html">декораторы</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>В процессе решения одной задачи возникла необходимость демонизировать одну довольно простую программу, которая должна повторятся в фоне бесконечно через определённые промежутки времени. В статье описано последовательность решения поставленной задачи. Получилось довольно много кода, результат выложен на <a class="reference external" href="https://github.com/dmisem/dsm_pytools">гитхабе</a>.</p>
+<p>Так как изучаю python решил поискать (написать) утилитку для выполнения этой задачи. Покопавшись в недрах Интернета, нашёл класс который неплохо справляется с этой задачей (к сожалению, ссылку на сайт не сохранил). После того, как адаптировал код к python3, получил такой класс:</p>
+<details> <summary>посмотреть код</summary><div class="highlight"><pre><span class="k">class</span> <span class="nc">Daemon</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A generic daemon class.</span>
+
+<span class="sd">    Usage: subclass the Daemon class and override the run() method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pidfile</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="s">&#39;/dev/null&#39;</span><span class="p">,</span>
+                 <span class="n">stdout</span><span class="o">=</span><span class="s">&#39;/dev/null&#39;</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="s">&#39;/dev/null&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdin</span> <span class="o">=</span> <span class="n">stdin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">stdout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">stderr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span> <span class="o">=</span> <span class="n">pidfile</span>
+
+    <span class="k">def</span> <span class="nf">daemonize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        do the UNIX double-fork magic,</span>
+<span class="sd">        see Stevens&#39; &quot;Advanced Programming in the UNIX Environment&quot;</span>
+<span class="sd">        for details (ISBN 0201563177)</span>
+<span class="sd">        http://www.erlenstar.demon.co.uk/unix/faq_2.html#SEC16</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c"># exit first parent</span>
+                <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">(</span><span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;fork #1 failed: </span><span class="si">%d</span><span class="s"> (</span><span class="si">%s</span><span class="s">)</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">))</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c"># decouple from parent environment</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">setsid</span><span class="p">()</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c"># do second fork</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">pid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c"># exit from second parent</span>
+                <span class="nb">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">(</span><span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;fork #2 failed: </span><span class="si">%d</span><span class="s"> (</span><span class="si">%s</span><span class="s">)</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">))</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c"># redirect standard file descriptors</span>
+        <span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="n">si</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">so</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s">&#39;a+&#39;</span><span class="p">)</span>
+        <span class="n">se</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#39;a+&#39;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">si</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">so</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">stdout</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span><span class="n">se</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="n">stderr</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+
+        <span class="c"># write pidfile</span>
+        <span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delpid</span><span class="p">)</span>
+        <span class="n">pid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">())</span>
+        <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">,</span> <span class="s">&#39;w+&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">pid</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">delpid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Start the daemon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Check for a pidfile to see if the daemon already runs</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pf</span><span class="p">:</span>
+                <span class="n">pid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">(</span><span class="ne">IOError</span><span class="p">):</span>
+            <span class="n">pid</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">if</span> <span class="n">pid</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;pidfile </span><span class="si">%s</span><span class="s"> already exist. Daemon already running?</span><span class="se">\n</span><span class="s">&quot;</span>
+            <span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">)</span>
+            <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c"># Start the daemon</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">daemonize</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Stop the daemon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># Get the pid from the pidfile</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pf</span><span class="p">:</span>
+                <span class="n">pid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="k">except</span><span class="p">(</span><span class="ne">IOError</span><span class="p">):</span>
+            <span class="n">pid</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pid</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;pidfile </span><span class="si">%s</span><span class="s"> does not exist. Daemon not running?</span><span class="se">\n</span><span class="s">&quot;</span>
+            <span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">)</span>
+            <span class="k">return</span>  <span class="c"># not an error in a restart</span>
+
+        <span class="c"># Try killing the daemon process</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">SIGTERM</span><span class="p">)</span>
+                <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">(</span><span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;No such process&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pidfile</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">restart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restart the daemon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        You should override this method when you subclass Daemon.</span>
+<span class="sd">        It will be called after the process has been</span>
+<span class="sd">        daemonized by start() or restart().</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+</pre></div>
+</details><br /><p>Проверил, работает ничего, но пользоваться регулярно неудобно. Поэтому решил добавить функцию, которая будет за меня (как пользователя этой утилитой) создавать класс-реализацию и &quot;прикручивать&quot; функцию, которую нужно демонизировать а также выполнять действия 'start', 'stop' или 'restart'. Результат:</p>
+<details> <summary>посмотреть код</summary><div class="highlight"><pre><span class="k">def</span> <span class="nf">daemon_exec</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">pidfile</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">action</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">DMN_Actions</span><span class="p">:</span> <span class="k">return</span>
+    <span class="n">DMN_Actions</span><span class="p">[</span><span class="n">action</span><span class="p">](</span><span class="n">pidfile</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">)</span>
+
+
+<span class="n">DMN_Actions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;start&#39;</span><span class="p">:</span> <span class="n">daemon_start</span><span class="p">,</span>
+    <span class="s">&#39;stop&#39;</span><span class="p">:</span> <span class="n">daemon_stop</span><span class="p">,</span>
+    <span class="s">&#39;restart&#39;</span><span class="p">:</span> <span class="n">daemon_restart</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">daemon_start</span><span class="p">(</span><span class="n">pidfile</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">DmnDecor</span><span class="p">(</span><span class="n">Daemon</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">func</span><span class="p">()</span>
+    <span class="n">DmnDecor</span><span class="p">(</span><span class="n">pidfile</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">daemon_stop</span><span class="p">(</span><span class="n">pidfile</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">):</span>
+    <span class="n">Daemon</span><span class="p">(</span><span class="n">pidfile</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">daemon_restart</span><span class="p">(</span><span class="n">pidfile</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">DmnDecor</span><span class="p">(</span><span class="n">Daemon</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">func</span><span class="p">()</span>
+    <span class="n">DmnDecor</span><span class="p">(</span><span class="n">pidfile</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">)</span><span class="o">.</span><span class="n">restart</span><span class="p">()</span>
+</pre></div>
+</details><br /><p>Теперь этим можно уже пользоваться. Например, так:</p>
+<details> <summary>посмотреть код</summary><div class="highlight"><pre><span class="c">#! /usr/bin/python3</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">dsm_pytools.daemon</span> <span class="kn">import</span> <span class="n">daemon_exec</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;HOME&#39;</span><span class="p">),</span> <span class="s">&#39;daemon_example&#39;</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;stdout&#39;</span><span class="p">:</span> <span class="n">fn</span> <span class="o">+</span> <span class="s">&#39;.log&#39;</span><span class="p">}</span>
+<span class="n">action</span> <span class="o">=</span> <span class="bp">None</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">dmn_example</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">):</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;testing daemon ...&#39;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="n">daemon_exec</span><span class="p">(</span><span class="n">dmn_example</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">fn</span> <span class="o">+</span> <span class="s">&#39;.pid&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</details><br /><p>Так как аппетит приходит во время еды, добавим немного &quot;сахара&quot; в виде декораторов. Для лучшего понимания декораторов в python можно порекомендовать одну статью, точнее, это <a class="reference external" href="http://stackoverflow.com/questions/739654/how-can-i-make-a-chain-of-function-decorators-in-python">развернутый ответ на stackoverflow.com</a>. Переводов в Интернете гуляет немало, например, <a class="reference external" href="http://habrahabr.ru/post/141411/">на хабре</a>.</p>
+<p>Получили такую вот функцию:</p>
+<details> <summary>посмотреть код</summary><div class="highlight"><pre><span class="k">def</span> <span class="nf">daemon_decor</span><span class="p">(</span><span class="n">pidfile</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">decor</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">daemon_exec</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">pidfile</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="n">act</span>
+    <span class="k">return</span> <span class="n">decor</span>
+</pre></div>
+</details><br /><p>Теперь использовать более &quot;красиво&quot;:</p>
+<details> <summary>посмотреть код</summary><div class="highlight"><pre><span class="c">#! /usr/bin/python3</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">dsm_pytools.daemon</span> <span class="kn">import</span> <span class="n">daemon_decor</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;HOME&#39;</span><span class="p">),</span> <span class="s">&#39;daemon_example&#39;</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;stdout&#39;</span><span class="p">:</span> <span class="n">fn</span> <span class="o">+</span> <span class="s">&#39;.log&#39;</span><span class="p">}</span>
+<span class="n">action</span> <span class="o">=</span> <span class="bp">None</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="nd">@daemon_decor</span><span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="s">&#39;.pid&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">out</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dmn_example</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;testing daemon ...&#39;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="n">dmn_example</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</pre></div>
+</details><br /><p>И последний момент, который захотелось реализовать − автоматизировать повтор действия. До сих пор, демонизируется функция, в которой выполняется бесконечный цикл. Почему бы и этот цикл не завернуть в декоратор:</p>
+<details> <summary>посмотреть код</summary><div class="highlight"><pre><span class="k">def</span> <span class="nf">repeat_daemon_decor</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">,</span> <span class="n">pidfile</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">decor</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">new_func</span><span class="p">():</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="p">(</span><span class="ow">not</span> <span class="n">times</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;=</span> <span class="n">times</span><span class="p">):</span>
+                <span class="n">func</span><span class="p">()</span>
+                <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="n">action</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">daemon_exec</span><span class="p">(</span><span class="n">new_func</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">pidfile</span><span class="p">,</span> <span class="o">**</span><span class="n">std</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span>
+
+        <span class="k">return</span> <span class="n">act</span>
+    <span class="k">return</span> <span class="n">decor</span>
+</pre></div>
+</details><br /><p>Теперь использовать его сущее удовольствие:</p>
+<details> <summary>посмотреть код</summary><div class="highlight"><pre><span class="c">#! /usr/bin/python3</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">argv</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">dsm_pytools.daemon</span> <span class="kn">import</span> <span class="n">repeat_daemon_decor</span> <span class="k">as</span> <span class="n">rdd</span>
+
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;HOME&#39;</span><span class="p">),</span> <span class="s">&#39;daemon_example&#39;</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;stdout&#39;</span><span class="p">:</span> <span class="n">fn</span> <span class="o">+</span> <span class="s">&#39;.log&#39;</span><span class="p">}</span>
+<span class="n">action</span> <span class="o">=</span> <span class="bp">None</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="nd">@rdd</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">fn</span> <span class="o">+</span> <span class="s">&#39;.pid&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">out</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dmn_example</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;testing daemon ...&#39;</span><span class="p">)</span>
+
+
+<span class="n">dmn_example</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</pre></div>
+</details><br /><p>И в завершение, для общедоступности разместил результат (свёл всё вместе, добавил обработку исключения ...) на <a class="reference external" href="https://github.com/dmisem/dsm_pytools">гитхабе</a>.</p>
+<!-- Links: -->
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://ua.linkedin.com/pub/dmitry-semenov/5/994/a6a"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://github.com/dmisem"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://bitbucket.org/dmisem"><i class="fa fa-bitbucket-square fa-lg"></i> bitbucket</a></li>
+                <li class="list-group-item"><a href="mailto:dmitry.5674@gmail.com"><i class="fa fa-envelope-square fa-lg"></i> e-mail</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="list-group-item"><a href="../../tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                            <li class="list-group-item tag-1">
+                                <a href="../../tag/blog.html">
+                                    blog
+                                </a>
+ </li>                             <li class="list-group-item tag-2">
+                                <a href="../../tag/pelican.html">
+                                    pelican
+                                </a>
+                         - <a href="../../tag/python.html"> python </a>
+ </li>                             <li class="list-group-item tag-4">
+                                <a href="../../tag/about.html">
+                                    about
+                                </a>
+                         - <a href="../../tag/libreoffice.html"> LibreOffice </a>
+                         - <a href="../../tag/dekoratory.html"> декораторы </a>
+                         - <a href="../../tag/restructuredtext.html"> reStructuredText </a>
+                         - <a href="../../tag/docutils.html"> docutils </a>
+                         - <a href="../../tag/github.html"> github </a>
+                         - <a href="../../tag/start.html"> start </a>
+                </ul>
+            </li>
+    <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://getpelican.com/" target="_blank">
+                Pelican
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://jinja.pocoo.org/" target="_blank">
+                Jinja2
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://docutils.sourceforge.net/rst.html" target="_blank">
+                ReStructuredText
+            </a>
+        </li>
+      </ul>
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 ДСМ
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="../../theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="../../theme/js/respond.min.js"></script>
+
+
+</body>
+</html>
