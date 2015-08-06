@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*- #
 
-# from __future__ import unicode_literals
+from __future__ import unicode_literals
+
 import os
 import sys
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 sys.path.append(SITE_ROOT)
 import local_settings as ls
+
 
 AUTHOR = ls.AUTHOR
 SITENAME = ls.SITENAME
@@ -63,6 +65,12 @@ TAGS_URL = 'tags.html'
 DISPLAY_CATEGORIES_ON_SIDEBAR = False
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = False
 
-PLUGIN_PATHS = [SITE_ROOT + '/plugins']
+# PLUGIN_PATHS = [SITE_ROOT + '/plugins']
+PLUGIN_PATHS = ['plugins']
 PLUGINS = ['tag_cloud']
 USE_FOLDER_AS_CATEGORY = True
+
+if __name__ == "__main__":
+    d = globals()
+    for k in dir():
+        print('{0} => {1}'.format(k, d[k]))
