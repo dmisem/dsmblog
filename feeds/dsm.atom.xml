@@ -252,7 +252,11 @@
 
 &lt;span class="n"&gt;dmn_example&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/details&gt;&lt;br /&gt;&lt;p&gt;И в завершение, для общедоступности разместил результат (свёл всё вместе, добавил обработку исключения ...) на &lt;a class="reference external" href="https://github.com/dmisem/dsm_pytools"&gt;гитхабе&lt;/a&gt;.&lt;/p&gt;
+&lt;/details&gt;&lt;br /&gt;&lt;p&gt;В завершение:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;В статье изложен ход решения задачи; окончательное решение находится на &lt;a class="reference external" href="https://github.com/dmisem/dsm_pytools"&gt;гитхабе&lt;/a&gt;, развивается и может несколько отличаться от того, как написано в статье;&lt;/li&gt;
+&lt;li&gt;Я знаю про StartUP и systemd а также про то, что для python есть готовые решения как на гитхабе, так и на PyPi.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;!-- Links: --&gt;
 </summary><category term="python"></category><category term="декораторы"></category></entry><entry><title>Импорт конфигурационных файлов python</title><link href="http://localhost:8000/articles/ru/import-konfiguratsionnykh-failov-python.html" rel="alternate"></link><updated>2015-07-09T00:00:00+03:00</updated><author><name>ДСМ</name></author><id>tag:localhost:8000,2015-07-09:articles/ru/import-konfiguratsionnykh-failov-python.html</id><summary type="html">&lt;p&gt;Продолжаю (после перерыва) заметки для себя. Сейчас немного из области изучения python.&lt;/p&gt;
 &lt;p&gt;Словари в python видятся мне как очень удобный инструмент для ведения конфигурационных файлов (любого вида, любой вложенности). Например, такого типа:&lt;/p&gt;
